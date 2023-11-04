@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+li {
+  font-weight: 600;
+}
+
+a.active {
+  color: coral;
+  transition: 1s;
+}
