@@ -11,11 +11,11 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const Slider = () => {
   return (
-    <div className="mt-10 container m-auto ">
+    <div className="mt-10 container m-auto hidden">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
-        autoplay={{
+    autoplay={{
           delay: 2500,
           disableOnInteraction: false,
         }}
