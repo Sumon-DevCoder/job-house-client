@@ -33,8 +33,26 @@ const Navbar = () => {
         <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <NavLink to={"/myCart"}>MyCart</NavLink>
+        <NavLink to={"/job"}>All Jobs</NavLink>
       </li>
+      {user && (
+        <>
+          {" "}
+          <li>
+            <NavLink to={"/job"}> Applied Jobs</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/job"}>Add A Job</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/job"}>My Jobs</NavLink>
+          </li>{" "}
+        </>
+      )}
+      <li>
+        <NavLink to={"/job"}>Blogs</NavLink>
+      </li>
+
       <li>
         <NavLink to={"/login"}>Login</NavLink>
       </li>

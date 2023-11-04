@@ -85,6 +85,8 @@ const Register = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        // auto navigate
+        navigte(location?.state ? location?.state : "/");
       })
       .catch((error) => setError(error.message));
   };
