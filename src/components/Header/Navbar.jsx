@@ -78,7 +78,7 @@ const Navbar = () => {
 
           <Link to={"/"} className="flex items-center">
             <h1 className="font-extrabold text-transparent text-2xl bg-clip-text bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800">
-              ShopHouse
+              JOBHouse
             </h1>
           </Link>
 
