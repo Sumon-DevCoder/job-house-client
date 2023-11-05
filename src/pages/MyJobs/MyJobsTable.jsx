@@ -5,25 +5,7 @@ import { LiaHandPointRight } from "react-icons/lia";
 import { FaHandHoldingUsd } from "react-icons/fa";
 import { IoMdPersonAdd } from "react-icons/io";
 import { CiCalendarDate } from "react-icons/ci";
-import { Link } from "react-router-dom";
-import useAuthContext from "../../hooks/useAuthContext";
-import Swal from "sweetalert2";
-
-const AllJobTable = ({ job }) => {
-  const { user } = useAuthContext();
-
-  const handleAlert = () => {
-    return Swal.fire({
-      title: "please Login to Show Details ",
-      showClass: {
-        popup: "animate__animated animate__fadeInDown",
-      },
-      hideClass: {
-        popup: "animate__animated animate__fadeOutUp",
-      },
-    });
-  };
-
+const MyJobsTable = ({ job, handleDelete, handleUpdate }) => {
   return (
     <div>
       <div
@@ -69,20 +51,23 @@ const AllJobTable = ({ job }) => {
                 {job?.applicationDeadline}
               </div>
 
-              <div>
-                {user ? (
-                  <Link to={`/details/${job?._id}`}>
-                    <button className="btn btn-sm capitalize">
-                      View Details
-                    </button>
-                  </Link>
-                ) : (
-                  <Link onClick={handleAlert} to={`/details/${job?._id}`}>
-                    <button className="btn btn-sm  capitalize">
-                      View Details
-                    </button>
-                  </Link>
-                )}
+              <div className="space-y-2">
+                <div>
+                  <button
+                    onClick={() => handleUpdate(job?._id)}
+                    className="btn btn-sm capitalize"
+                  >
+                    Update
+                  </button>
+                </div>
+                <div>
+                  <button
+                    onClick={() => handleDelete(job?._id)}
+                    className="btn btn-sm capitalize"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -92,8 +77,10 @@ const AllJobTable = ({ job }) => {
   );
 };
 
-AllJobTable.propTypes = {
+MyJobsTable.propTypes = {
   job: PropTypes.array.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+  handleUpdate: PropTypes.func.isRequired,
 };
 
-export default AllJobTable;
+export default MyJobsTable;

@@ -39,18 +39,18 @@ const Navbar = () => {
         <>
           {" "}
           <li>
-            <NavLink to={"/job"}> Applied Jobs</NavLink>
+            <NavLink to={"/appliedJobs"}> Applied Jobs</NavLink>
           </li>
           <li>
-            <NavLink to={"/job"}>Add A Job</NavLink>
+            <NavLink to={"/addJob"}>Add A Job</NavLink>
           </li>
           <li>
-            <NavLink to={"/job"}>My Jobs</NavLink>
+            <NavLink to={"/myJobs"}>My Jobs</NavLink>
           </li>{" "}
         </>
       )}
       <li>
-        <NavLink to={"/job"}>Blogs</NavLink>
+        <NavLink to={"/blogs"}>Blogs</NavLink>
       </li>
 
       <li>
