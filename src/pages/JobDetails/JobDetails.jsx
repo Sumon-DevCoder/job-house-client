@@ -10,6 +10,18 @@ import toast, { Toaster } from "react-hot-toast";
 const JobDetails = () => {
   const job = useLoaderData();
   const { user } = useAuthContext();
+  const {
+    postedBy,
+    jobTitle,
+    category,
+    description,
+    imgUrl,
+    location,
+    salaryRange,
+    jobPostingDate,
+    applicationDeadline,
+    applicantsNumber,
+  } = job || console.log(job);
 
   const handleApplyBtn = (e) => {
     e.preventDefault();
@@ -18,14 +30,22 @@ const JobDetails = () => {
     const userName = form.name.value;
     const email = form.email.value;
     const resumeLink = form.resumeLink.value;
-    const jobType = form.jobType.value;
 
     const jobAppliesInfo = {
       userName,
       resumeLink,
       email,
-      jobType,
       apply_id: job?._id,
+      postedBy,
+      jobTitle,
+      category,
+      description,
+      imgUrl,
+      location,
+      salaryRange,
+      jobPostingDate,
+      applicationDeadline,
+      applicantsNumber,
     };
 
     console.log(jobAppliesInfo);

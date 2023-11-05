@@ -10,6 +10,7 @@ import AllJob from "../pages/AllJob/AllJob";
 import AppliedJob from "../pages/AppliedJob/AppliedJob";
 import AddJob from "../pages/AddJob/AddJob";
 import MyJobs from "../pages/MyJobs/MyJobs";
+import UpdateJobs from "../pages/UpdateJobs/UpdateJobs";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,12 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/updateJobs/:id",
+        element: <UpdateJobs />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/jobsByEmail/${params?.id}`),
       },
       {
         path: "/addJob",

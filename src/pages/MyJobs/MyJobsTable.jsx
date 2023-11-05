@@ -5,6 +5,7 @@ import { LiaHandPointRight } from "react-icons/lia";
 import { FaHandHoldingUsd } from "react-icons/fa";
 import { IoMdPersonAdd } from "react-icons/io";
 import { CiCalendarDate } from "react-icons/ci";
+import { Link } from "react-router-dom";
 const MyJobsTable = ({ job, handleDelete, handleUpdate }) => {
   return (
     <div>
@@ -53,12 +54,14 @@ const MyJobsTable = ({ job, handleDelete, handleUpdate }) => {
 
               <div className="space-y-2">
                 <div>
-                  <button
-                    onClick={() => handleUpdate(job?._id)}
-                    className="btn btn-sm capitalize"
-                  >
-                    Update
-                  </button>
+                  <Link to={`/updateJobs/${job?._id}`}>
+                    <button
+                      onClick={() => handleUpdate(job?._id)}
+                      className="btn btn-sm capitalize"
+                    >
+                      Update
+                    </button>
+                  </Link>
                 </div>
                 <div>
                   <button
