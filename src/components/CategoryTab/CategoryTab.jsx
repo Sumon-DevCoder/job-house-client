@@ -1,12 +1,29 @@
 import { useEffect, useState } from "react";
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import { Tab, TabList, Tabs } from "react-tabs";
+import { BiSolidUserAccount, BiSolidLocationPlus } from "react-icons/bi";
+import { LiaHandPointRight } from "react-icons/lia";
+import { FaHandHoldingUsd } from "react-icons/fa";
+import { IoMdPersonAdd } from "react-icons/io";
+import { CiCalendarDate } from "react-icons/ci";
 import "react-tabs/style/react-tabs.css";
+import { Link } from "react-router-dom";
 
 const CategoryTab = () => {
   const [category, setCategory] = useState("");
   const [jobsData, setJobsData] = useState([]);
+  const [allJobsData, setAllJobsData] = useState([]);
 
-  console.log(jobsData);
+  console.log(jobsData, allJobsData);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/jobs`)
+      .then((res) => res.json())
+      .then((data) => {
+        // setJobsData(data);
+        // setCategory(data);
+        setAllJobsData(data);
+      });
+  }, []);
 
   useEffect(() => {
     fetch(`http://localhost:5000/jobs/${category}`)
@@ -17,6 +34,9 @@ const CategoryTab = () => {
   return (
     <div>
       <Tabs className="text-center mt-16 container m-auto">
+        <h2 className="text-2xl font-bold mb-6">
+          Find the job that is perfect for You
+        </h2>
         <TabList>
           <Tab>All Jobs</Tab>
           <Tab onClick={() => setCategory(`On Site Job`)}>On Site Job</Tab>
@@ -24,41 +44,53 @@ const CategoryTab = () => {
           <Tab onClick={() => setCategory(`Hybrid`)}>Hybrid</Tab>
           <Tab onClick={() => setCategory(`Part Time`)}>Part Time</Tab>
         </TabList>
-        <div className="grid grid-cols-2  gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-5 md:gap-x-8  md:px-5 justify-items-center container m-auto mb-10">
           {jobsData?.map((job) => (
-            // <div key={job?._id} className="border-2 bg-green-400 h-20">
-            //   <h2>{job?.category}</h2>
-            // </div>
-            <div key={job?._id} className="w-full pt-5 px-2">
-              <div className="bg-white shadow-xl rounded-lg overflow-hidden ">
-                <div>
-                  <div className="p-4 md:p-5">
-                    <p className="font-bold text-start text-lg">
-                      {job?.jobTitle}
-                    </p>
-                    <p className="text-gray-700 text-start md:text-lg">
-                      {job?.category}
+            <div key={job?._id} className="lg:w-full md:w-96  pt-5 px-2">
+              <div className="card bg-[#FFFFFF] ">
+                <div className="p-5">
+                  <div className="flex justify-between">
+                    <h2 className="card-title  text-black">{job?.jobTitle}</h2>
+                    <p>Post:{job?.jobPostingDate}</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <BiSolidUserAccount className="text-lg " /> {job?.postedBy}
+                  </div>
+
+                  <div className="text-start flex gap-20  text-gray-400 ">
+                    <p className="text-start text-lg flex items-center gap-2">
+                      <LiaHandPointRight className="text-lg " /> {job?.category}
                     </p>
                   </div>
-                  <div className="p-4 md:p-5 w-full  bg-gray-100">
-                    <div className="sm:flex sm:justify-between sm:items-center">
-                      <div>
-                        <div className="text-lg text-start text-gray-700">
-                          <span>{job?.postedBy}</span>
-                        </div>
-                        <div className="text-sm md:text-base text-start text-gray-700">
-                          <span>{job?.applicationDeadline}</span>
-                        </div>
-                        <div className="text-gray-600 text-start  text-sm md:text-base">
-                          {job?.jobPostingDate}
-                        </div>
-                      </div>
-                      <button className=" sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-lg rounded-lg shadow-md">
-                        Book now
-                      </button>
+
+                  <div className="text-start flex flex-wrap  gap-10  text-gray-400 ">
+                    <div className="flex items-center gap-1">
+                      <FaHandHoldingUsd className="text-lg " />{" "}
+                      <span className="text-black">Salary :</span>{" "}
+                      {job?.salaryRange}
                     </div>
-                    <div className="mt-3 text-start text-gray-600 text-sm md:text-base">
-                      Applicants: {job?.applicantsNumber}
+
+                    <div className="flex items-center gap-1">
+                      <BiSolidLocationPlus className="text-lg " />{" "}
+                      <span className="text-black"></span> {job?.location}
+                    </div>
+                  </div>
+                  <div className="text-start flex flex-wrap justify-between  text-gray-400 ">
+                    <div className="flex items-center gap-2 mr-5">
+                      <IoMdPersonAdd className="text-lg " />{" "}
+                      <span className="text-black">Applicants :</span>
+                      {job?.applicantsNumber}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <CiCalendarDate className="text-lg " />{" "}
+                      <span className="text-black">deadline :</span>{" "}
+                      {job?.applicationDeadline}
+                    </div>
+
+                    <div>
+                      <Link to={`/details/${job?._id}`}>
+                        <button className="btn btn-sm ">See Details</button>
+                      </Link>
                     </div>
                   </div>
                 </div>

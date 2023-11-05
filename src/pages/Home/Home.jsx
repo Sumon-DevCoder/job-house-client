@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
-import Slider from "../../components/Header/Slider";
 import CategoryTab from "../../components/CategoryTab/CategoryTab";
+import CustomerReview from "../../components/CustomerReview/CustomerReview";
+import Banner from "../../components/Header/Banner";
 
 const Home = () => {
   return (
@@ -8,8 +9,9 @@ const Home = () => {
       <Helmet>
         <title>Home</title>
       </Helmet>
-      <Slider />
+      <Banner />
       <CategoryTab />
+      <CustomerReview />
     </div>
   );
 };
