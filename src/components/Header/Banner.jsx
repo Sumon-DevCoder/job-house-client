@@ -13,7 +13,7 @@ const Banner = () => {
           ></video>
         </div>
         <div className="video-content space-y-2 z-10">
-          <h1 className="font-light text-6xl">JOBHouse</h1>
+          <h1 className="font-light text-6xl">Your Dream Job Is Waiting</h1>
           <h3 className="font-light text-3xl">
             Find the job that is perfect for You
           </h3>

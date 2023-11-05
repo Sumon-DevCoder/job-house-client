@@ -7,13 +7,28 @@ import { IoMdPersonAdd } from "react-icons/io";
 import { CiCalendarDate } from "react-icons/ci";
 import "react-tabs/style/react-tabs.css";
 import { Link } from "react-router-dom";
+import useAuthContext from "../../hooks/useAuthContext";
+import Swal from "sweetalert2";
 
 const CategoryTab = () => {
+  const { user } = useAuthContext();
   const [category, setCategory] = useState("");
   const [jobsData, setJobsData] = useState([]);
   const [allJobsData, setAllJobsData] = useState([]);
 
   console.log(jobsData, allJobsData);
+
+  const handleAlert = () => {
+    return Swal.fire({
+      title: "please Login to Show Details ",
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp",
+      },
+    });
+  };
 
   useEffect(() => {
     fetch(`http://localhost:5000/jobs`)
@@ -26,7 +41,7 @@ const CategoryTab = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/jobs/${category}`)
+    fetch(`http://localhost:5000/jobByCategory/${category}`)
       .then((res) => res.json())
       .then((data) => setJobsData(data));
   }, [category]);
@@ -88,9 +103,17 @@ const CategoryTab = () => {
                     </div>
 
                     <div>
-                      <Link to={`/details/${job?._id}`}>
-                        <button className="btn btn-sm ">See Details</button>
-                      </Link>
+                      {user ? (
+                        <Link to={`/details/${job?._id}`}>
+                          <button className="btn btn-sm ">See Details</button>
+                        </Link>
+                      ) : (
+                        <Link to={`/details/${job?._id}`}>
+                          <button onClick={handleAlert} className="btn btn-sm ">
+                            See Details
+                          </button>
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>
