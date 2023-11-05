@@ -50,12 +50,6 @@ const AllJob = () => {
           </div>
         </form>
       </div>
-      {/* map data */}
-      {/* <div>
-        {jobsData
-          ? jobsData?.map((job) => <AllJobTable key={job?._id} job={job} />)
-          : jobs?.map((job) => <AllJobTable key={job?._id} job={job} />)}
-      </div> */}
       <div>
         {jobsData?.map((job) => (
           <AllJobTable key={job?._id} job={job} />

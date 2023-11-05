@@ -105,12 +105,17 @@ const CategoryTab = () => {
                     <div>
                       {user ? (
                         <Link to={`/details/${job?._id}`}>
-                          <button className="btn btn-sm ">See Details</button>
+                          <button className="btn btn-sm capitalize">
+                            View Details
+                          </button>
                         </Link>
                       ) : (
                         <Link to={`/details/${job?._id}`}>
-                          <button onClick={handleAlert} className="btn btn-sm ">
-                            See Details
+                          <button
+                            onClick={handleAlert}
+                            className="btn btn-sm capitalize"
+                          >
+                            View Details
                           </button>
                         </Link>
                       )}

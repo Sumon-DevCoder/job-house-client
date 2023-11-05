@@ -69,11 +69,15 @@ const AllJobTable = ({ job }) => {
               <div>
                 {user ? (
                   <Link to={`/details/${job?._id}`}>
-                    <button className="btn btn-sm ">See Details</button>
+                    <button className="btn btn-sm capitalize">
+                      View Details
+                    </button>
                   </Link>
                 ) : (
                   <Link onClick={handleAlert} to={`/details/${job?._id}`}>
-                    <button className="btn btn-sm ">See Details</button>
+                    <button className="btn btn-sm  capitalize">
+                      View Details
+                    </button>
                   </Link>
                 )}
               </div>
