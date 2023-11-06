@@ -39,7 +39,7 @@ const CategoryTab = ({ allJobsData }) => {
   return (
     <div>
       <Tabs className="text-center mt-16 container m-auto">
-        <h2 className="text-2xl font-bold mb-6">
+        <h2 className="text-3xl text-[#10B981] font-bold font-serif  mb-6 ">
           Find the job that is perfect for You
         </h2>
         <TabList>

@@ -9,24 +9,24 @@ const AppliedJob = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   console.log("jobs", jobs);
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/jobAppliesByEmail?email=${user?.email}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setJobs(data));
-  // }, [user?.email]);
-
   useEffect(() => {
-    fetch(`http://localhost:5000/jobAppliesByEmail/${selectedCategory}`)
+    fetch(`http://localhost:5000/jobAppliesByEmail?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setJobs(data));
-  }, [selectedCategory]);
+  }, [user?.email]);
+
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/jobAppliesByEmail/${selectedCategory}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setJobs(data));
+  // }, [selectedCategory]);
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
   };
 
   return (
-    <div className="pt-10 text-center ">
+    <div className="pt-10 h-[50vh] text-center mb-20">
       <Helmet>
         <title>Applied Job</title>
       </Helmet>

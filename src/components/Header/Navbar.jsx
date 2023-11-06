@@ -73,7 +73,7 @@ const Navbar = () => {
           {/* menubar */}
           <div
             onClick={() => setIsActive(!isActive)}
-            className={`dropdown md:hidden `}
+            className={`dropdown lg:hidden `}
           >
             <label tabIndex={0}>
               {isActive ? (
@@ -207,7 +207,7 @@ const Navbar = () => {
             className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
             id="navbar-user"
           >
-            <ul className="flex flex-col font-medium dark:text-gray-300 p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0   dark:border-gray-700">
+            <ul className="flex flex-col font-medium dark:text-gray-300 p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:hidden lg:flex  lg:flex-row md:space-x-8 md:mt-0 md:border-0  dark:border-gray-700">
               {navLinks}
             </ul>
           </div>

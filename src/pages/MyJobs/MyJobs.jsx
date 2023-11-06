@@ -72,7 +72,7 @@ const MyJobs = () => {
   };
 
   return (
-    <div>
+    <div className="h-[50vh]">
       <Helmet>
         <title>MyJobs</title>
       </Helmet>

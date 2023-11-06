@@ -1,57 +1,64 @@
-const Test = () => {
-  return (
-    <div>
-      {/* <div className="w-full max-w-3xl  mx-auto mt-10">
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <form onSubmit={handleSubmit}>
-            <div className="grid grid-cols-2 gap-6">
-              <div className="col-span-2 sm:col-span-1">
-                <label
-                  htmlFor="card-number"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  User Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  id="card-number"
-                  placeholder="User Name"
-                  defaultValue={user?.displayName}
-                  className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
-                />
-              </div>
-              <div className="col-span-2 sm:col-span-1">
-                <label
-                  htmlFor="card-holder"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Email
-                </label>
-                <input
-                  type="text"
-                  name="email"
-                  id="card-holder"
-                  placeholder="Full Name"
-                  defaultValue={user?.email}
-                  readOnly
-                  className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
-                />
-              </div>
-            </div>
-            <div className="mt-8">
-              <button
-                type="submit"
-                className="w-full bg-green-500 btn hover:bg-blue-600 text-white font-medium py-3 rounded-lg focus:outline-none"
-              >
-                Booking
-              </button>
-            </div>
-          </form>
-        </div>
-      </div> */}
-    </div>
-  );
-};
+// import { Swiper, SwiperSlide } from "swiper/react";
 
-export default Test;
+// // Import Swiper styles
+// import "swiper/css";
+// import "swiper/css/effect-coverflow";
+// import "swiper/css/pagination";
+
+// import { EffectCoverflow, Pagination } from "swiper/modules";
+
+// const Test = () => {
+//   return (
+//     <div className="w-full my-10">
+//       <Swiper
+//         effect={"coverflow"}
+//         grabCursor={true}
+//         centeredSlides={true}
+//         slidesPerView={"auto"}
+//         coverflowEffect={{
+//           rotate: 50,
+//           stretch: 0,
+//           depth: 100,
+//           modifier: 1,
+//           slideShadows: true,
+//         }}
+//         pagination={true}
+//         modules={[EffectCoverflow, Pagination]}
+//         className="mySwiper  h-[80vh]"
+//       >
+//         <SwiperSlide className="p-40">
+//           <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+//         </SwiperSlide>
+//         <SwiperSlide className="p-40">
+//           <img
+//             className=""
+//             src="https://swiperjs.com/demos/images/nature-2.jpg"
+//           />
+//         </SwiperSlide>
+//         <SwiperSlide className="p-40">
+//           <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+//         </SwiperSlide>
+//       </Swiper>
+//     </div>
+//   );
+// };
+
+// export default Test;
