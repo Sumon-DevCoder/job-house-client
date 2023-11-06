@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet";
 import CategoryTab from "../../components/CategoryTab/CategoryTab";
-import CustomerReview from "../../components/CustomerReview/CustomerReview";
 import Banner from "../../components/Header/Banner";
 import FeatuesCompany from "../../components/FeatuesCompany/FeatuesCompany";
 import { useLoaderData } from "react-router-dom";
@@ -17,7 +16,6 @@ const Home = () => {
       <Banner />
       <CategoryTab allJobsData={allJobsData} />
       <FeatuesCompany />
-      <CustomerReview />
       <SkillsSection />
     </div>
   );

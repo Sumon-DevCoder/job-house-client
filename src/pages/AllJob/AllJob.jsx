@@ -30,7 +30,7 @@ const AllJob = () => {
       <Helmet>
         <title>All Jobs</title>
       </Helmet>
-      <div className="text-center">
+      <div className="text-center max-h-[50vh]">
         <form onSubmit={handleSearchBtn} className="join text-black mt-10 ">
           <div>
             <div>

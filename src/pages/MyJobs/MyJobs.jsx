@@ -4,6 +4,7 @@ import useAuthContext from "../../hooks/useAuthContext";
 import MyJobsTable from "./MyJobsTable";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 // import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
@@ -19,14 +20,16 @@ const MyJobs = () => {
   //   if (user?.email) {
   //     axiosSecure
   //       .get(`/jobsByEmail?email=${user?.email}`)
-  //       .then((res) => setJobs(res?.data));
+  //       .then((res) => console.log(res));
   //   }
   // }, [axiosSecure, user?.email]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/jobsByEmail?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setJobs(data));
+    axios
+      .get(`http://localhost:5000/jobsByEmail?email=${user?.email}`, {
+        withCredentials: true,
+      })
+      .then((res) => setJobs(res.data));
   }, [user?.email]);
 
   // handle update
@@ -72,7 +75,7 @@ const MyJobs = () => {
   };
 
   return (
-    <div className="h-[50vh]">
+    <div className="">
       <Helmet>
         <title>MyJobs</title>
       </Helmet>

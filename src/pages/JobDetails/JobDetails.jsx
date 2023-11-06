@@ -7,6 +7,7 @@ import { BiSolidUserAccount, BiSolidLocationPlus } from "react-icons/bi";
 import useAuthContext from "../../hooks/useAuthContext";
 import toast, { Toaster } from "react-hot-toast";
 import Swal from "sweetalert2";
+import emailjs from "@emailjs/browser";
 
 const JobDetails = () => {
   const job = useLoaderData();
@@ -85,9 +86,9 @@ const JobDetails = () => {
     console.log("hello");
 
     const form = e.target;
-    const userName = form.name.value;
-    const email = form.email.value;
-    const resumeLink = form.resumeLink.value;
+    const userName = form.user_name.value;
+    const email = form.user_email.value;
+    const resumeLink = form.message.value;
 
     const jobAppliesInfo = {
       userName,
@@ -119,6 +120,23 @@ const JobDetails = () => {
       .then((data) => {
         if (data.insertedId) {
           toast("Apply Successful");
+
+          // send email
+          emailjs
+            .sendForm(
+              "service_0gc8iwh",
+              "template_viquzab",
+              form.current,
+              "xQf__-KNRZfJkvZKk"
+            )
+            .then(
+              (result) => {
+                console.log(result.text);
+              },
+              (error) => {
+                console.log(error.text);
+              }
+            );
 
           // updated applicant number
           fetch(`http://localhost:5000/jobApplicant/${_id}`, {
@@ -206,7 +224,7 @@ const JobDetails = () => {
                               </label>
                               <input
                                 type="text"
-                                name="name"
+                                name="user_name"
                                 id="card-number"
                                 placeholder="User Name"
                                 defaultValue={user?.displayName}
@@ -221,8 +239,8 @@ const JobDetails = () => {
                                 Email
                               </label>
                               <input
-                                type="text"
-                                name="email"
+                                type="email"
+                                name="user_email"
                                 id="card-holder"
                                 placeholder="Full Name"
                                 defaultValue={user?.email}
@@ -239,7 +257,7 @@ const JobDetails = () => {
                               </label>
                               <input
                                 type="url"
-                                name="resumeLink"
+                                name="message"
                                 id="card-number"
                                 placeholder="Resume Link"
                                 required
@@ -266,6 +284,7 @@ const JobDetails = () => {
                           <div className="mt-8">
                             <button
                               type="submit"
+                              value="Send"
                               className="w-full btn bg-green-500  hover:bg-blue-600 text-white font-medium py-3 rounded-lg focus:outline-none"
                             >
                               Submit
