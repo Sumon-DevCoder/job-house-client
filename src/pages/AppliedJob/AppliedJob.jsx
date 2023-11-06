@@ -1,22 +1,29 @@
 import { useEffect, useState } from "react";
-import useAuthContext from "../../hooks/useAuthContext";
-import AllJobTable from "../AllJob/AllJobTable";
 import { Helmet } from "react-helmet";
+import AllJobTable from "../AllJob/AllJobTable";
+import useAuthContext from "../../hooks/useAuthContext";
 
 const AppliedJob = () => {
   const { user } = useAuthContext();
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState();
+  const [selectedCategory, setSelectedCategory] = useState("");
+  console.log("jobs", jobs);
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/jobAppliesByEmail?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setJobs(data));
-  }, [user?.email]);
-
-  //   fetch(`http://localhost:5000/jobAppliesByEmail/Hybrid}`)
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/jobAppliesByEmail?email=${user?.email}`)
   //     .then((res) => res.json())
   //     .then((data) => setJobs(data));
-  // }, []);
+  // }, [user?.email]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/jobAppliesByEmail/${selectedCategory}`)
+      .then((res) => res.json())
+      .then((data) => setJobs(data));
+  }, [selectedCategory]);
+
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
 
   return (
     <div className="pt-10 text-center ">
@@ -26,6 +33,8 @@ const AppliedJob = () => {
       <select
         name="category"
         className="select btn text-white bg-slate-600 border-2 w-80 required"
+        value={selectedCategory}
+        onChange={handleCategoryChange}
       >
         <option disabled selected>
           Job Category

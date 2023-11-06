@@ -46,6 +46,8 @@ const router = createBrowserRouter([
             <AppliedJob />
           </PrivateRoute>
         ),
+        // loader: () =>
+        //   fetch(`http://localhost:5000/jobAppliesByEmail?email=${user?.email}`),
       },
       {
         path: "/login",

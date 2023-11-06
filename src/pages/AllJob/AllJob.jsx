@@ -6,23 +6,23 @@ import { Helmet } from "react-helmet";
 const AllJob = () => {
   const jobs = useLoaderData();
   const [jobsData, setJobsData] = useState(jobs);
-  const [category, setCategory] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
 
-  // console.log("search data", jobsData);
-  console.log(category);
+  console.log("search data", jobsData);
+  // console.log(category);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/jobByCategory/${category}`)
+    fetch(`http://localhost:5000/jobByTitle/${jobTitle}`)
       .then((res) => res.json())
       .then((data) => setJobsData(data));
-  }, [category]);
+  }, [jobTitle]);
 
   const handleSearchBtn = (e) => {
     e.preventDefault();
     const form = e.target;
-    const category = form.category.value;
-    setCategory(category);
-    console.log("my pppp", category);
+    const jobTitle = form.jobTitle.value;
+    setJobTitle(jobTitle);
+    console.log("my pppp", jobTitle);
   };
 
   return (
@@ -36,8 +36,8 @@ const AllJob = () => {
             <div>
               <input
                 className="input w-40  input-bordered join-item"
-                placeholder="Search"
-                name="category"
+                placeholder="Search Category"
+                name="jobTitle"
               />
             </div>
           </div>
