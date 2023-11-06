@@ -22,6 +22,7 @@ const JobDetails = () => {
     jobPostingDate,
     applicationDeadline,
     applicantsNumber,
+    _id,
   } = job;
 
   // date calculation
@@ -118,6 +119,17 @@ const JobDetails = () => {
       .then((data) => {
         if (data.insertedId) {
           toast("Apply Successful");
+
+          // updated applicant number
+          fetch(`http://localhost:5000/jobApplicant/${_id}`, {
+            method: "PATCH",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({ applicantsNumber }),
+          })
+            .then((res) => res.json())
+            .then((data) => console.log(data));
         }
 
         console.log("appliedInfo", data);
@@ -125,7 +137,7 @@ const JobDetails = () => {
   };
 
   return (
-    <div className="flex justify-center pt-10">
+    <div className="flex justify-center pt-10 mb-20">
       <div key={job?._id} className=" w-6/12  pt-5 px-2">
         <div className="card bg-[#FFFFFF] ">
           <div className="p-5">

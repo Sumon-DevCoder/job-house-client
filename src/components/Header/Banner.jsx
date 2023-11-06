@@ -14,21 +14,28 @@ const Banner = () => {
           ></video> */}
           <img className="w-full" src="/images/banner-dreamJob.jpg" alt="" />
         </div>
-        <div className="video-content space-y-2 z-10">
-          <h1 className="font-light text-6xl">Your Dream Job Is Waiting</h1>
-          <h3 className="font-light text-3xl">
-            Find the job that is perfect for You
-          </h3>
+        <div className="video-content space-y-4 z-10">
+          <h1 className="font-light text-6xl">
+            Your Dream{" "}
+            <span className="text-[#10B981] font-semibold">Job Is Waiting</span>{" "}
+          </h1>
+          <p className="font-light text-gray-300 text-2xl">
+            We offers the largest platform for job seekers. You can search for{" "}
+            <br />
+            relevant jobs type like Part Time, Remote. Reach out to <br />{" "}
+            millions of job offers by posting your resume and <br />
+            creating alerts for free.
+          </p>
           <div className="join text-black">
             <div>
               <div>
                 <input
-                  className="input w-40 h-8 input-bordered join-item"
+                  className="input w-40 input-bordered join-item"
                   placeholder="Search"
                 />
               </div>
             </div>
-            <select className="select btn btn-sm  select-bordered join-item">
+            <select className="select btn  select-bordered join-item">
               <option disabled selected>
                 Filter
               </option>
@@ -37,7 +44,7 @@ const Banner = () => {
               <option>Part-Time Job</option>
             </select>
             <div>
-              <button className="btn btn-sm join-item">Search</button>
+              <button className="btn join-item">Search</button>
             </div>
           </div>
         </div>

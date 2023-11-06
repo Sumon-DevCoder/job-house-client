@@ -13,7 +13,7 @@ const FeatuesCompany = () => {
   return (
     <div>
       <div className="text-center text-xl  md:text-3xl font-bold">
-        Top Feature Companies
+        Actively Hiring top Featured Companies
       </div>
       <div className="mt-10 container m-auto">
         <Swiper
