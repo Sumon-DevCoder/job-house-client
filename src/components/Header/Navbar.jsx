@@ -99,9 +99,15 @@ const Navbar = () => {
           </div>
 
           <Link to={"/"} className="flex items-center">
-            <h1 className="font-extrabold text-transparent text-2xl bg-clip-text bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800">
+            {/* <h1 className="font-extrabold text-transparent text-2xl bg-clip-text bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800">
               JOBHouse
-            </h1>
+            </h1> */}
+
+            <img
+              className="w-40 rounded"
+              src="/public/images/logo.png"
+              alt=""
+            />
           </Link>
 
           {/* dark mode */}

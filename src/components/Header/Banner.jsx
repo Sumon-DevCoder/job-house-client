@@ -3,14 +3,16 @@ const Banner = () => {
     <div>
       <section className="relative h-[70vh] flex flex-col  pt-20 text-center text-white mt-8">
         <div className="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
-          <video
+          {/* <video
             className="min-w-full min-h-full absolute object-cover"
-            src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+            // src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+            src="https://www.youtube.com/embed/U5b0SS5p7Qs?si=hnCVFzWB85Oi49xZ"
             type="video/mp4"
             autoPlay
             muted
             loop
-          ></video>
+          ></video> */}
+          <img className="w-full" src="/images/banner-dreamJob.jpg" alt="" />
         </div>
         <div className="video-content space-y-2 z-10">
           <h1 className="font-light text-6xl">Your Dream Job Is Waiting</h1>
