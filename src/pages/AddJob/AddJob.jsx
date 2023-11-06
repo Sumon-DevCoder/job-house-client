@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import useAuthContext from "../../hooks/useAuthContext";
+import { Helmet } from "react-helmet";
 
 const AddJob = () => {
   const { user } = useAuthContext();
@@ -60,6 +61,9 @@ const AddJob = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Add Job</title>
+      </Helmet>
       <div className="w-full max-w-3xl  mx-auto mt-10">
         <div className="bg-white rounded-lg shadow-lg p-6">
           <h2 className="text-lg font-medium mb-6"></h2>

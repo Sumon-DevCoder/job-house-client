@@ -11,6 +11,7 @@ import AppliedJob from "../pages/AppliedJob/AppliedJob";
 import AddJob from "../pages/AddJob/AddJob";
 import MyJobs from "../pages/MyJobs/MyJobs";
 import UpdateJobs from "../pages/UpdateJobs/UpdateJobs";
+import Blogs from "../pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => fetch("http://localhost:5000/jobs"),
       },
       {
         path: "/details/:id",
@@ -39,11 +41,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/appliedJob",
-        element: <AppliedJob />,
+        element: (
+          <PrivateRoute>
+            <AppliedJob />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs />,
       },
       {
         path: "/register",
@@ -53,7 +63,7 @@ const router = createBrowserRouter([
         path: "/updateJobs/:id",
         element: <UpdateJobs />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/jobsByEmail/${params?.id}`),
+          fetch(`http://localhost:5000/jobsById/${params?.id}`),
       },
       {
         path: "/addJob",

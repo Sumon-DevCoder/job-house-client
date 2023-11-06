@@ -9,14 +9,20 @@ import "react-tabs/style/react-tabs.css";
 import { Link } from "react-router-dom";
 import useAuthContext from "../../hooks/useAuthContext";
 import Swal from "sweetalert2";
+import { PropTypes } from "prop-types";
 
-const CategoryTab = () => {
+const CategoryTab = ({ allJobsData }) => {
   const { user } = useAuthContext();
   const [category, setCategory] = useState("");
-  const [jobsData, setJobsData] = useState([]);
-  const [allJobsData, setAllJobsData] = useState([]);
+  const [jobsData, setJobsData] = useState(allJobsData);
 
-  console.log(jobsData, allJobsData);
+  console.log(jobsData);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/jobByCategory/${category}`)
+      .then((res) => res.json())
+      .then((data) => setJobsData(data));
+  }, [category]);
 
   const handleAlert = () => {
     return Swal.fire({
@@ -30,22 +36,6 @@ const CategoryTab = () => {
     });
   };
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/jobs`)
-      .then((res) => res.json())
-      .then((data) => {
-        // setJobsData(data);
-        // setCategory(data);
-        setAllJobsData(data);
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/jobByCategory/${category}`)
-      .then((res) => res.json())
-      .then((data) => setJobsData(data));
-  }, [category]);
-
   return (
     <div>
       <Tabs className="text-center mt-16 container m-auto">
@@ -53,7 +43,7 @@ const CategoryTab = () => {
           Find the job that is perfect for You
         </h2>
         <TabList>
-          <Tab>All Jobs</Tab>
+          <Tab onClick={() => setJobsData(allJobsData)}>All Jobs</Tab>
           <Tab onClick={() => setCategory(`On Site Job`)}>On Site Job</Tab>
           <Tab onClick={() => setCategory(`Remote Job`)}>Remote Job</Tab>
           <Tab onClick={() => setCategory(`Hybrid`)}>Hybrid</Tab>
@@ -129,6 +119,10 @@ const CategoryTab = () => {
       </Tabs>
     </div>
   );
+};
+
+CategoryTab.propTypes = {
+  allJobsData: PropTypes.array.isRequired,
 };
 
 export default CategoryTab;

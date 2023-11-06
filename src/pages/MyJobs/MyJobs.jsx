@@ -3,6 +3,7 @@ import useAuthContext from "../../hooks/useAuthContext";
 
 import MyJobsTable from "./MyJobsTable";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 // import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
@@ -72,6 +73,9 @@ const MyJobs = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>MyJobs</title>
+      </Helmet>
       {jobs?.map((job) => (
         <MyJobsTable
           key={job?._id}

@@ -12,7 +12,6 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const ReviewCard = ({ review }) => {
-  console.log(review);
   return (
     <div>
       <div className="-mx-6 hidden lg:col-span-2 lg:mx-0">

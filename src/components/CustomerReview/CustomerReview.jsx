@@ -17,7 +17,7 @@ const CustomerReview = () => {
         ))}
       </div>
       <section className="bg-gray-50 hidden">
-        <div className="mx-auto max-w-[1340px] px-4 py-12 sm:px-6 lg:me-0 lg:py-16 lg:pe-0 lg:ps-8 xl:py-24">
+        <div className="mx-auto max-w-[1340px] px-4 py-12 sm:px-6 lg:me-0 lg:py-16 lg:pe-0 lg:ps-8 xl:py-24 hidden">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:items-center lg:gap-16">
             <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">

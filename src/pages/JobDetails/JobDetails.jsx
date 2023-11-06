@@ -6,6 +6,7 @@ import { CiCalendarDate } from "react-icons/ci";
 import { BiSolidUserAccount, BiSolidLocationPlus } from "react-icons/bi";
 import useAuthContext from "../../hooks/useAuthContext";
 import toast, { Toaster } from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const JobDetails = () => {
   const job = useLoaderData();
@@ -21,11 +22,67 @@ const JobDetails = () => {
     jobPostingDate,
     applicationDeadline,
     applicantsNumber,
-  } = job || console.log(job);
+  } = job;
+
+  // date calculation
+  const currentDate = new Date(Date.now());
+  const dedlineDate = new Date(applicationDeadline);
+
+  // check post email
+  const postEmail = job.email;
+  const userEmail = user?.email;
+
+  console.log(userEmail, postEmail);
+
+  // handle Apply validtion
+  const handleValidation = () => {
+    if (dedlineDate < currentDate) {
+      return Swal.fire({
+        title: "The deadline is over",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `,
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `,
+        },
+      });
+    }
+
+    if (postEmail === userEmail) {
+      return Swal.fire({
+        title: "Sorry, Can't Apply because You create This Job Post",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `,
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `,
+        },
+      });
+    }
+  };
 
   const handleApplyBtn = (e) => {
     e.preventDefault();
     // get input field
+
+    console.log("hello");
+
     const form = e.target;
     const userName = form.name.value;
     const email = form.email.value;
@@ -113,12 +170,15 @@ const JobDetails = () => {
               <div>
                 <button
                   className="btn"
-                  onClick={() =>
-                    document.getElementById("my_modal_1").showModal()
+                  onClick={
+                    dedlineDate > currentDate && postEmail !== userEmail
+                      ? () => document.getElementById("my_modal_1").showModal()
+                      : handleValidation
                   }
                 >
                   Apply
                 </button>
+
                 <dialog id="my_modal_1" className="modal">
                   <div className="modal-box ">
                     <div className="w-full max-w-3xl  mx-auto mt-10">
