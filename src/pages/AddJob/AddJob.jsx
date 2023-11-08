@@ -1,9 +1,22 @@
 import Swal from "sweetalert2";
 import useAuthContext from "../../hooks/useAuthContext";
 import { Helmet } from "react-helmet";
+import ReactDatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useEffect, useState } from "react";
+import Aos from "aos";
 
 const AddJob = () => {
+  useEffect(() => {
+    Aos.init();
+  }, []);
   const { user } = useAuthContext();
+  // react date picker
+  const [postingDate, setPostingDate] = useState(new Date());
+  const [deadlineDate, setDeadlineDate] = useState(new Date());
+
+  console.log("post", postingDate);
+  console.log("deadline", deadlineDate);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,19 +27,21 @@ const AddJob = () => {
     const jobTitle = form.jobTitle.value;
     const category = form.category.value;
     const description = form.description.value;
-    const imgUrl = form.imgUrl.value;
     const location = form.location.value;
     const salaryRange = form.salaryRange.value;
-    const jobPostingDate = form.jobPostingDate.value;
-    const applicationDeadline = form.applicationDeadline.value;
+    const jobPostingDate = postingDate;
+    const applicationDeadline = deadlineDate;
+    const brand_img = form.logoUrl.value;
+    const jobBanner_img = form.bannerUrl.value;
 
     const addJobInfo = {
       postedBy,
+      brand_img,
+      jobBanner_img,
       email,
       jobTitle,
       category,
       description,
-      imgUrl,
       location,
       salaryRange,
       jobPostingDate,
@@ -36,7 +51,7 @@ const AddJob = () => {
 
     console.log(addJobInfo);
 
-    fetch("http://localhost:5000/jobs", {
+    fetch("https://job-house-server.vercel.app/jobs", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -49,7 +64,7 @@ const AddJob = () => {
           Swal.fire({
             position: "top-center",
             icon: "success",
-            title: "Job Added Successful",
+            title: "Job Post Added Successful",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -64,9 +79,16 @@ const AddJob = () => {
       <Helmet>
         <title>Add Job</title>
       </Helmet>
-      <div className="w-full max-w-3xl  mx-auto mt-10">
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <h2 className="text-lg font-medium mb-6"></h2>
+      <div
+        data-aos="fade-up"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="1000"
+        className="w-full max-w-3xl  mx-auto mt-10"
+      >
+        <div className="bg-white dark:bg-slate-500 rounded-lg shadow-lg p-6">
+          <h2 className="text-3xl underline font-medium mb-6 text-center">
+            Create Job Post
+          </h2>
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-6">
               <div className="col-span-2 sm:col-span-1">
@@ -133,12 +155,12 @@ const AddJob = () => {
                   className="select border-2 w-80 required"
                 >
                   <option disabled selected>
-                    Job Category
+                    Remote Job
                   </option>
                   <option value="Remote Job">Remote Job</option>
                   <option value="On Site Job">On Site Job</option>
                   <option value="Hybrid">Hybrid</option>
-                  <option value="Part Iime">Part Time</option>
+                  <option value="Part Time">Part Time</option>
                 </select>
               </div>
               <div className="col-span-2 sm:col-span-1">
@@ -163,14 +185,31 @@ const AddJob = () => {
                   htmlFor="card-number"
                   className="block text-sm font-medium text-gray-700 mb-2"
                 >
-                  Picture URL
+                  Job Banner URL
                 </label>
                 <input
                   type="url"
-                  name="imgUrl"
+                  name="bannerUrl"
                   id="card-number"
                   required
-                  placeholder="Enter Picture url"
+                  placeholder="Enter banner url"
+                  defaultValue=""
+                  className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                />
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <label
+                  htmlFor="card-number"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  Company logo URL
+                </label>
+                <input
+                  type="url"
+                  name="logoUrl"
+                  id="card-number"
+                  required
+                  placeholder="Enter logo url"
                   defaultValue=""
                   className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
@@ -217,10 +256,13 @@ const AddJob = () => {
                 >
                   Job Posting Date
                 </label>
-                <input
+                <ReactDatePicker
                   type="date"
                   name="jobPostingDate"
                   id="expiration-date"
+                  selected={postingDate}
+                  onChange={(date) => setPostingDate(date)}
+                  showTimeSelect={false}
                   required
                   placeholder="MM / YY"
                   className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
@@ -234,7 +276,10 @@ const AddJob = () => {
                 >
                   Application Deadline
                 </label>
-                <input
+                <ReactDatePicker
+                  selected={deadlineDate}
+                  onChange={(date) => setDeadlineDate(date)}
+                  showTimeSelect={false}
                   type="date"
                   name="applicationDeadline"
                   id="cvv"

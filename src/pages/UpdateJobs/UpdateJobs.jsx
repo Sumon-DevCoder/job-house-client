@@ -1,18 +1,24 @@
 import { useLoaderData } from "react-router-dom";
 import useAuthContext from "../../hooks/useAuthContext";
 import Swal from "sweetalert2";
+import ReactDatePicker from "react-datepicker";
+import { useState } from "react";
 
 const UpdateJobs = () => {
   const singleJobData = useLoaderData();
+  // react date picker
+  const [postingDate, setPostingDate] = useState(new Date());
+  const [deadlineDate, setDeadlineDate] = useState(new Date());
   const { user } = useAuthContext();
   const {
     jobTitle,
     category,
     description,
-    imgUrl,
     location,
     salaryRange,
     jobPostingDate,
+    brand_img,
+    jobBanner_img,
     applicationDeadline,
   } = singleJobData || {};
   console.log(singleJobData);
@@ -26,19 +32,21 @@ const UpdateJobs = () => {
     const jobTitle = form.jobTitle.value;
     const category = form.category.value;
     const description = form.description.value;
-    const imgUrl = form.imgUrl.value;
     const location = form.location.value;
     const salaryRange = form.salaryRange.value;
-    const jobPostingDate = form.jobPostingDate.value;
-    const applicationDeadline = form.applicationDeadline.value;
+    const jobPostingDate = postingDate;
+    const applicationDeadline = deadlineDate;
+    const brand_img = form.brand_img.value;
+    const jobBanner_img = form.jobBanner_img.value;
 
     const updateJobInfo = {
       postedBy,
+      jobBanner_img,
       email,
+      brand_img,
       jobTitle,
       category,
       description,
-      imgUrl,
       location,
       salaryRange,
       jobPostingDate,
@@ -48,13 +56,16 @@ const UpdateJobs = () => {
 
     console.log(updateJobInfo);
 
-    fetch(`http://localhost:5000/jobsById/${singleJobData?._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateJobInfo),
-    })
+    fetch(
+      `https://job-house-server.vercel.app/jobsById/${singleJobData?._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateJobInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -75,7 +86,9 @@ const UpdateJobs = () => {
     <div>
       <div className="w-full max-w-3xl  mx-auto mt-10">
         <div className="bg-white rounded-lg shadow-lg p-6">
-          <h2 className="text-lg font-medium text-red-400 mb-6">Update Form</h2>
+          <h2 className="text-3xl underline font-medium mb-6 text-center">
+            Update Job Post
+          </h2>
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-6">
               <div className="col-span-2 sm:col-span-1">
@@ -148,7 +161,7 @@ const UpdateJobs = () => {
                   <option value="Remote Job">Remote Job</option>
                   <option value="On Site Job">On Site Job</option>
                   <option value="Hybrid">Hybrid</option>
-                  <option value="Part Iime">Part Time</option>
+                  <option value="Part Time">Part Time</option>
                 </select>
               </div>
               <div className="col-span-2 sm:col-span-1">
@@ -173,15 +186,32 @@ const UpdateJobs = () => {
                   htmlFor="card-number"
                   className="block text-sm font-medium text-gray-700 mb-2"
                 >
-                  Picture URL
+                  Job Banner URL
                 </label>
                 <input
                   type="url"
-                  name="imgUrl"
+                  name="jobBanner_img"
                   id="card-number"
                   required
-                  placeholder="Enter Picture url"
-                  defaultValue={imgUrl}
+                  placeholder="Enter banner url"
+                  defaultValue={jobBanner_img}
+                  className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                />
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <label
+                  htmlFor="card-number"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  Company logo URL
+                </label>
+                <input
+                  type="url"
+                  name="brand_img"
+                  id="card-number"
+                  required
+                  placeholder="Enter logo url"
+                  defaultValue={brand_img}
                   className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
               </div>
@@ -227,12 +257,15 @@ const UpdateJobs = () => {
                 >
                   Job Posting Date
                 </label>
-                <input
+                <ReactDatePicker
                   type="date"
                   name="jobPostingDate"
                   id="expiration-date"
-                  required
+                  selected={postingDate}
+                  onChange={(date) => setPostingDate(date)}
+                  showTimeSelect={false}
                   defaultValue={jobPostingDate}
+                  required
                   placeholder="MM / YY"
                   className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
@@ -245,7 +278,10 @@ const UpdateJobs = () => {
                 >
                   Application Deadline
                 </label>
-                <input
+                <ReactDatePicker
+                  selected={deadlineDate}
+                  onChange={(date) => setDeadlineDate(date)}
+                  showTimeSelect={false}
                   type="date"
                   name="applicationDeadline"
                   id="cvv"

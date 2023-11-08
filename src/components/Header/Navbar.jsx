@@ -68,7 +68,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className=" w-full fixed mb-10 z-20">
+      <nav className=" w-full fixed bg-slate-50 dark:bg-slate-900  mb-10 z-20">
         <div className="w-full flex flex-wrap items-center justify-between container  mx-auto p-2">
           {/* menubar */}
           <div

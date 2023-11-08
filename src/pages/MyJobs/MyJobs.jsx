@@ -4,33 +4,28 @@ import useAuthContext from "../../hooks/useAuthContext";
 import MyJobsTable from "./MyJobsTable";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
-import axios from "axios";
 
-// import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import Aos from "aos";
 
 const MyJobs = () => {
-  // const axiosSecure = useAxiosSecure();
+  useEffect(() => {
+    Aos.init();
+  }, []);
+
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuthContext();
   const [jobs, setJobs] = useState([]);
 
-  console.log(jobs);
   console.log(user.email);
   // loadData
-  // useEffect(() => {
-  //   if (user?.email) {
-  //     axiosSecure
-  //       .get(`/jobsByEmail?email=${user?.email}`)
-  //       .then((res) => console.log(res));
-  //   }
-  // }, [axiosSecure, user?.email]);
-
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/jobsByEmail?email=${user?.email}`, {
-        withCredentials: true,
-      })
-      .then((res) => setJobs(res.data));
-  }, [user?.email]);
+    if (user?.email) {
+      axiosSecure
+        .get(`/jobsByEmail?email=${user?.email}`)
+        .then((res) => setJobs(res.data));
+    }
+  }, [axiosSecure, user?.email]);
 
   // handle update
   const handleUpdate = (_id) => {
@@ -49,7 +44,7 @@ const MyJobs = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/jobsByEmail/${_id}`, {
+        fetch(`https://job-house-server.vercel.app/jobsByEmail/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -79,14 +74,11 @@ const MyJobs = () => {
       <Helmet>
         <title>MyJobs</title>
       </Helmet>
-      {jobs?.map((job) => (
-        <MyJobsTable
-          key={job?._id}
-          job={job}
-          handleUpdate={handleUpdate}
-          handleDelete={handleDelete}
-        />
-      ))}
+      <MyJobsTable
+        jobs={jobs}
+        handleUpdate={handleUpdate}
+        handleDelete={handleDelete}
+      />
     </div>
   );
 };

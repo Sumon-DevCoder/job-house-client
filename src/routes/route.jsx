@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/jobs"),
+        loader: () => fetch("https://job-house-server.vercel.app/jobs"),
       },
       {
         path: "/details/:id",
@@ -32,12 +32,12 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/jobsById/${params?.id}`),
+          fetch(`https://job-house-server.vercel.app/jobsById/${params?.id}`),
       },
       {
         path: "/allJobs",
         element: <AllJob />,
-        loader: () => fetch("http://localhost:5000/jobs"),
+        loader: () => fetch("https://job-house-server.vercel.app/jobs"),
       },
       {
         path: "/appliedJob",
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         // loader: () =>
-        //   fetch(`http://localhost:5000/jobAppliesByEmail?email=${user?.email}`),
+        //   fetch(`https://job-house-server.vercel.app/jobAppliesByEmail?email=${user?.email}`),
       },
       {
         path: "/login",
@@ -65,7 +65,7 @@ const router = createBrowserRouter([
         path: "/updateJobs/:id",
         element: <UpdateJobs />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/jobsById/${params?.id}`),
+          fetch(`https://job-house-server.vercel.app/jobsById/${params?.id}`),
       },
       {
         path: "/addJob",

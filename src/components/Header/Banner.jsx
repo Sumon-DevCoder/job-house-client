@@ -1,7 +1,14 @@
+import Aos from "aos";
+import { useEffect } from "react";
+
 const Banner = () => {
+  useEffect(() => {
+    Aos.init();
+  }, []);
+
   return (
     <div>
-      <section className="relative  h-72 md:h-[70vh] flex flex-col  pt-20 text-center text-white mt-8">
+      <section className="relative  flex flex-col  pt-20 text-center text-white mt-8">
         <div className="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
           {/* <video
             className="min-w-full min-h-full absolute object-cover"
@@ -14,7 +21,12 @@ const Banner = () => {
           ></video> */}
           <img className="w-full" src="/images/banner-dreamJob.jpg" alt="" />
         </div>
-        <div className="video-content space-y-4 z-10 ">
+        <div
+          className="video-content space-y-4 z-10 "
+          data-aos="fade-right"
+          data-aos-duration="1000"
+          data-aos-easing="linear"
+        >
           <h1 className="font-light text-3xl md:text-6xl">
             Your Dream{" "}
             <span className="text-[#10B981] font-semibold">Job Is Waiting</span>{" "}
@@ -26,7 +38,7 @@ const Banner = () => {
             millions of job offers by posting your resume and <br />
             creating alerts for free.
           </p>
-          <div className="join text-black hidden md:flex justify-center">
+          <div className="join text-black hidden md:flex justify-center pb-40">
             <div>
               <div>
                 <input

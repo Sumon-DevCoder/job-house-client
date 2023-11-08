@@ -62,13 +62,13 @@ const AuthProvider = ({ children }) => {
       // jwt auth
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", loggedUser, {
+          .post("https://job-house-server.vercel.app/jwt", loggedUser, {
             withCredentials: true,
           })
           .then((res) => console.log("jwt data", res.data));
       } else {
         axios
-          .post("http://localhost:5000/logout", loggedUser, {
+          .post("https://job-house-server.vercel.app/logout", loggedUser, {
             withCredentials: true,
           })
           .then((res) => console.log("jwt cookie clean data", res.data));

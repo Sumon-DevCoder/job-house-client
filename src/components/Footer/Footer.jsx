@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="px-3 pt-4 lg:px-9 border-t-2 dark:bg-slate-600 border-none bg-gray-400 mt-20">
+    <footer className="px-3 pt-4 lg:px-9 border-t-2 dark:bg-slate-600 border-none bg-gray-400 mt-48">
       <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2">
           <a href="#" className="inline-flex items-center">
@@ -28,7 +28,7 @@ const Footer = () => {
 
         <div className="flex flex-col gap-2 text-sm dark:text-gray-300">
           <p className="text-base font-bold tracking-wide text-gray-900">
-            Quick Link
+            Quick Links
           </p>
           <NavLink
             className="underline font-semibold hover:text-blue-500"

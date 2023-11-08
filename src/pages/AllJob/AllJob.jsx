@@ -6,24 +6,21 @@ import { Helmet } from "react-helmet";
 const AllJob = () => {
   const jobs = useLoaderData();
   const [jobsData, setJobsData] = useState(jobs);
-  const [jobTitle, setJobTitle] = useState("");
-
-  console.log("search data", jobsData);
-  // console.log(category);
+  const [searchValue, setSearchValue] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/jobByTitle/${jobTitle}`)
+    fetch(`https://job-house-server.vercel.app/allJobs`)
       .then((res) => res.json())
       .then((data) => setJobsData(data));
-  }, [jobTitle]);
+  }, []);
 
-  const handleSearchBtn = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const jobTitle = form.jobTitle.value;
-    setJobTitle(jobTitle);
-    console.log("my pppp", jobTitle);
-  };
+  useEffect(() => {
+    const filteredData = jobsData.filter((item) =>
+      item.jobTitle.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setSearchResults(filteredData);
+  }, [jobsData, searchValue]);
 
   return (
     <div>
@@ -31,13 +28,15 @@ const AllJob = () => {
         <title>All Jobs</title>
       </Helmet>
       <div className="text-center max-h-[50vh]">
-        <form onSubmit={handleSearchBtn} className="join text-black mt-10 ">
+        <div className="join text-black mt-10 ">
           <div>
             <div>
               <input
-                className="input w-40  input-bordered join-item"
-                placeholder="Search Category"
+                className="input  input-bordered join-item"
+                placeholder="Search Job Title..."
                 name="jobTitle"
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
               />
             </div>
           </div>
@@ -46,12 +45,10 @@ const AllJob = () => {
               Search
             </button>
           </div>
-        </form>
+        </div>
       </div>
       <div>
-        {jobsData?.map((job) => (
-          <AllJobTable key={job?._id} job={job} />
-        ))}
+        <AllJobTable searchResults={searchResults} />
       </div>
     </div>
   );

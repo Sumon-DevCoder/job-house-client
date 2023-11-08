@@ -6,7 +6,9 @@ const useJobAppliesByEmail = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/jobAppliesByEmail?email=${user?.email}`)
+    fetch(
+      `https://job-house-server.vercel.app/jobAppliesByEmail?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setData(data));
   }, [user?.email]);

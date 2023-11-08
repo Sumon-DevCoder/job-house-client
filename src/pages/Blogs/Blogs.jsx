@@ -65,6 +65,24 @@ const Blogs = () => {
                 that it has server side rendering which help improve to seo
                 friendly and fast loading page features etc.
               </p>
+
+              <p>
+                <span className="text-blue-400 font-medium underline text-xl">
+                  Ans: Explain My Code
+                </span>{" "}
+                <br />
+                Create this website i have facing many callengeces but, I
+                accepted challenge and enjoy my coding. <br />
+                i added many new features, package like - tanstack query, aos
+                animation, framer motion, swipper js etc. besides i have been
+                organize my code folderwise, and also use hooks for i don`t use
+                DRY. <br /> <br />
+                overall this code in my perspective the most important hardship
+                & interesting part is state mangement, data filtering, & jwt
+                authentication but belive me i enjoy very much. I also seperate
+                my code by client and server side folder. so overall jouerney
+                was very interting, enjoyable. even i am big fan of PH.
+              </p>
               <div className="flex justify-between items-center"></div>
             </article>
           </div>
