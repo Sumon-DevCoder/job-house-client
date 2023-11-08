@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -30,37 +30,55 @@ const Footer = () => {
           <p className="text-base font-bold tracking-wide text-gray-900">
             Quick Links
           </p>
-          <NavLink
-            className="underline font-semibold hover:text-blue-500"
+          <Link
+            className="underline font-semibold hover:text-green-800"
             to={"/"}
           >
             Home
-          </NavLink>
-          <NavLink
-            className="underline font-semibold hover:text-blue-500"
+          </Link>
+          <Link
+            className="underline font-semibold hover:text-green-800"
             to={"/blogs"}
           >
             Blogs
-          </NavLink>
-          <NavLink
-            className="underline font-semibold hover:text-blue-500"
+          </Link>
+          <Link
+            className="underline font-semibold hover:text-green-800"
             to={"/allJObs"}
           >
             All Jobs
-          </NavLink>
+          </Link>
           <p className="text-base font-bold tracking-wide text-gray-900">
             EMPLOYERS ZONE
           </p>
-          <a href="#">Post Job for Free</a>
-          <a href="#">End-to-End Recruitment</a>
-          <a href="#">Resume Search</a>
+          <Link
+            className="underline hover:text-green-800 font-medium"
+            to={"/blogs"}
+            href="#"
+          >
+            Post Job for Free
+          </Link>
+          <Link
+            className="underline hover:text-green-800 font-medium"
+            to={"/blogs"}
+            href="#"
+          >
+            End-to-End Recruitment
+          </Link>
+          <Link
+            className="underline hover:text-green-800 font-medium"
+            to={"/blogs"}
+            href="#"
+          >
+            Resume Search
+          </Link>
         </div>
 
         <div>
-          <p className="text-base font-bold tracking-wide uppercase text-gray-900">
+          <p className="text-base font-bold tracking-wide uppercase dark:text-gray-400  text-gray-900">
             Connect With Available Link
           </p>
-          <div className="flex items-center py-5 gap-1 px-2 ">
+          <div className="flex items-center py-5 gap-1 px-2 dark:text-gray-300">
             <a
               href="#"
               className="inline-flex items-center justify-center h-8 w-8  border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400"
@@ -111,53 +129,41 @@ const Footer = () => {
             </a>
             <a
               className="w-full min-w-xl"
-              href="https://www.youtube.com/channel/UCo8tEi6SrGFP8XG9O0ljFgA"
+              href="https://www.youtube.com/@ProgrammingHeroCommunity"
             >
               <img
-                src="https://mcqmate.com/public/images/icons/youtube.svg"
+                src="/images/youtube-svgrepo-com.svg"
                 alt="Youtube Button"
-                className="h-14"
+                className="h-8"
               />
             </a>
           </div>
-          <p className="text-base font-bold tracking-wide text-gray-900">
+          <p className="text-base font-bold tracking-wide  text-gray-900">
             Contacts
           </p>
-          <div className="flex ">
+          <div className="flex dark:text-gray-400 ">
             <p className="mr-1 ">Phone : </p>
-            <a
-              className="text-gray-300 dark:text-gray-200"
-              href="#"
-              title="send email"
-            >
+            <a className="" href="#" title="send email">
               01962-878499
             </a>
           </div>
-          <div className="flex">
-            <p className="mr-1 text-gray-800">Address:</p>
-            <a
-              className="text-gray-300 dark:text-gray-200"
-              href="#"
-              title="send email"
-            >
+          <div className="flex  dark:text-gray-400">
+            <p className="mr-1 dark:text-gray-400 text-gray-800">Address:</p>
+            <a className="dark:text-gray-400" href="#" title="send email">
               Dhaka, Mirpur 2100
             </a>
           </div>
 
-          <div className="flex">
-            <p className="mr-1 text-gray-800">Email:</p>
-            <a
-              className="text-gray-300 dark:text-gray-200"
-              href="#"
-              title="send email"
-            >
+          <div className="flex dark:text-gray-400">
+            <p className="mr-1 text-gray-800 dark:text-gray-400">Email:</p>
+            <a className="dark:text-gray-400" href="#" title="send email">
               JobHouseBD@gmail.com
             </a>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col-reverse justify-between dark:border-gray-900 pt-5 pb-2 border-t lg:flex-row">
+      <div className="flex flex-col-reverse justify-between border-gray-500 pt-5 pb-2 border-t lg:flex-row">
         <p className="text-sm text-gray-600 dark:text-gray-300">
           © Copyright 2023 JobHouse. All rights reserved.
         </p>

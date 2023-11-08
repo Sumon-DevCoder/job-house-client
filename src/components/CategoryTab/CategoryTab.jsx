@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Tab, TabList, Tabs } from "react-tabs";
 import { BiSolidUserAccount } from "react-icons/bi";
 import { LiaHandPointRight } from "react-icons/lia";
@@ -10,6 +9,7 @@ import { Link } from "react-router-dom";
 import useAuthContext from "../../hooks/useAuthContext";
 import Swal from "sweetalert2";
 import { PropTypes } from "prop-types";
+import { useEffect, useState } from "react";
 import Aos from "aos";
 
 const CategoryTab = ({ allJobsData }) => {
@@ -25,13 +25,15 @@ const CategoryTab = ({ allJobsData }) => {
 
   const handleAlert = () => {
     return Swal.fire({
-      title: "Please Login to Show Details ",
-      showClass: {
-        popup: "animate__animated animate__fadeInDown",
-      },
-      hideClass: {
-        popup: "animate__animated animate__fadeOutUp",
-      },
+      title: "<strong> Please Login to Show Details </strong>",
+      icon: "info",
+
+      showCloseButton: false,
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: `
+        <i class="fa fa-thumbs-up"></i> Ok!
+      `,
     });
   };
 
@@ -41,14 +43,14 @@ const CategoryTab = ({ allJobsData }) => {
 
   return (
     <div className="my-20 ">
-      <Tabs className="text-center mt-16 container m-auto ">
+      <Tabs className="text-center mt-16 container m-auto px-10 md:px-0">
         <h1 className="text-4xl font-bold mb-2 dark:text-gray-400">
           Browse by category
         </h1>
         <h2 className="text-lg text-[#10B981] font-bold font-serif  mb-6 ">
           Find the job that is perfect for You
         </h2>
-        <TabList className=" bg-[#10B981] dark:bg-gray-500  rounded-lg   p-2 ">
+        <TabList className=" bg-[#10B981] dark:bg-gray-500  rounded-lg    p-2 ">
           <Tab onClick={() => setJobsData(allJobsData)}>All Jobs</Tab>
           <Tab onClick={() => setCategory(`On Site Job`)}>On Site Job</Tab>
           <Tab onClick={() => setCategory(`Remote Job`)}>Remote Job</Tab>
@@ -57,11 +59,11 @@ const CategoryTab = ({ allJobsData }) => {
         </TabList>
         <div
           data-aos="fade-up"
-          className="grid grid-cols-1  md:grid-cols-2  gap-5 md:gap-x-8 px-2  md:px-5 justify-items-center container m-auto mb-10"
+          className="grid grid-cols-1 mt-5  md:grid-cols-1 lg:grid-cols-2 gap-5 md:gap-x-8 px-2  md:px-5 justify-items-center container m-auto mb-10"
         >
           {jobsData?.map((job) => (
-            <div key={job?._id} className="lg:w-full md:w-96   pt-5 px-2">
-              <div className="card card-body p-2 bg-gradient-to-r from-cyan-500 to-cyan-200 ">
+            <div key={job?._id} className="lg:w-full    pt-5 px-2">
+              <div className="card card-body p-2 bg-gradient-to-r from-cyan-500 to-cyan-200  transform transition duration-500 hover:scale-110">
                 <div className="p-5 space-y-1">
                   <div className="flex  justify-between">
                     <h2 className="card-title  text-black">{job?.jobTitle}</h2>
@@ -78,7 +80,7 @@ const CategoryTab = ({ allJobsData }) => {
                   <div className="text-start flex flex-wrap  gap-10    ">
                     <div className="flex items-center gap-1">
                       <FaHandHoldingUsd className="text-lg " />{" "}
-                      <span className="text-black">Salary :</span>{" "}
+                      <span className="text-black">Salary :</span> $
                       {job?.salaryRange}
                     </div>
 

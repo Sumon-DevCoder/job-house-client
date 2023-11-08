@@ -8,11 +8,21 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import Aos from "aos";
+import { useEffect } from "react";
 
 const FeatuesCompany = () => {
+  // aos animation
+  useEffect(() => {
+    Aos.init();
+  }, []);
+
   return (
-    <div className="bg-gradient-to-r from-gray-700 via-gray-200 to-slate-900 p-10 p-10 ">
-      <div className="text-center text-xl  md:text-3xl font-bold ">
+    <div className="bg-gradient-to-r from-gray-700 via-gray-200 to-slate-900 p-10  ">
+      <div
+        className="text-center text-xl  md:text-3xl font-bold"
+        data-aos="fade-left"
+      >
         More than <span className="font-bold">50k recruiters</span> from leading
         tech companies are hiring
       </div>
@@ -31,7 +41,7 @@ const FeatuesCompany = () => {
           modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper rounded-md"
         >
-          <SwiperSlide className="">
+          <SwiperSlide data-aos-offset="500" data-aos-duration="500">
             <div className="grid grid-cols-3 md:grid-cols-6  gap-5 md:gap-10   container m-auto px-20">
               <div>
                 <img src="/images/brand_logo/1.png" alt="brand logo" />

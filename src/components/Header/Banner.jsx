@@ -1,5 +1,6 @@
 import Aos from "aos";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   useEffect(() => {
@@ -8,17 +9,8 @@ const Banner = () => {
 
   return (
     <div>
-      <section className="relative  flex flex-col  pt-20 text-center text-white mt-8">
+      <section className="relative lg:h-[80vh] flex flex-col  pt-20 text-center text-white">
         <div className="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
-          {/* <video
-            className="min-w-full min-h-full absolute object-cover"
-            // src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
-            src="https://www.youtube.com/embed/U5b0SS5p7Qs?si=hnCVFzWB85Oi49xZ"
-            type="video/mp4"
-            autoPlay
-            muted
-            loop
-          ></video> */}
           <img className="w-full" src="/images/banner-dreamJob.jpg" alt="" />
         </div>
         <div
@@ -27,36 +19,34 @@ const Banner = () => {
           data-aos-duration="1000"
           data-aos-easing="linear"
         >
-          <h1 className="font-light text-3xl md:text-6xl">
+          <h1 className="font-light text-2xl md:text-6xl">
             Your Dream{" "}
             <span className="text-[#10B981] font-semibold">Job Is Waiting</span>{" "}
           </h1>
-          <p className="font-light text-gray-300 text-[1rem] md:text-2xl">
+          <p className="font-light text-gray-300 text-md md:text-2xl">
             We offers the largest platform job seekers. You can search for{" "}
             <br />
             relevant jobs type like Part Time, Remote. Reach out to <br />{" "}
             millions of job offers by posting your resume and <br />
             creating alerts for free.
           </p>
-          <div className="join text-black hidden md:flex justify-center pb-40">
+          <div className="join text-black rounded-full  md:flex justify-center pb-4">
             <div>
               <div>
                 <input
-                  className="input w-40 input-bordered join-item"
-                  placeholder="Search"
+                  type="text"
+                  className="input h-8 lg:h-12 input-bordered join-item"
+                  placeholder="Search for Job..."
+                  required
                 />
               </div>
             </div>
-            <select className="select btn  select-bordered join-item">
-              <option disabled selected>
-                Filter
-              </option>
-              <option>Remote Job</option>
-              <option>OnSite Job</option>
-              <option>Part-Time Job</option>
-            </select>
             <div>
-              <button className="btn join-item">Search</button>
+              <Link to={"/allJobs"}>
+                <button className="btn btn-sm lg:btn-md join-item">
+                  Search
+                </button>
+              </Link>
             </div>
           </div>
         </div>

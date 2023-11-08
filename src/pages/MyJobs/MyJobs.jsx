@@ -36,7 +36,7 @@ const MyJobs = () => {
   const handleDelete = (_id) => {
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't Delete!",
+      text: "Do You won't to Delete!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -70,15 +70,22 @@ const MyJobs = () => {
   };
 
   return (
-    <div className="">
+    <div className="mt-14 text-center ">
       <Helmet>
         <title>MyJobs</title>
       </Helmet>
-      <MyJobsTable
-        jobs={jobs}
-        handleUpdate={handleUpdate}
-        handleDelete={handleDelete}
-      />
+
+      <span className="text-2xl font-bold dark:bg-slate-500 rounded-lg  bg-green-400 p-3 ">
+        My Posted Job
+      </span>
+
+      <div>
+        <MyJobsTable
+          jobs={jobs}
+          handleUpdate={handleUpdate}
+          handleDelete={handleDelete}
+        />
+      </div>
     </div>
   );
 };

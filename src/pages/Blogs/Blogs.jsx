@@ -7,7 +7,7 @@ const Blogs = () => {
         <title>Blogs</title>
       </Helmet>
 
-      <section className="bg-white dark:bg-gray-900 mt-10">
+      <section className="bg-[#F2F2F2] dark:bg-gray-900 -mb-48">
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
           <div className="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
             <h2 className="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
@@ -46,7 +46,7 @@ const Blogs = () => {
                 server apis do not give data and if user valid then server give
                 me data. <br /> <br />
                 we should store token in client of only http cookies because it
-                is more than secure local storage
+                is more than secure in local storage
               </p>
               <div className="flex justify-between items-center"></div>
             </article>
@@ -66,12 +66,12 @@ const Blogs = () => {
                 friendly and fast loading page features etc.
               </p>
 
-              <p>
+              <p className=" text-gray-500 dark:text-gray-400">
                 <span className="text-blue-400 font-medium underline text-xl">
                   Ans: Explain My Code
                 </span>{" "}
                 <br />
-                Create this website i have facing many callengeces but, I
+                Create this website i have facing many Challenges but, I
                 accepted challenge and enjoy my coding. <br />
                 i added many new features, package like - tanstack query, aos
                 animation, framer motion, swipper js etc. besides i have been

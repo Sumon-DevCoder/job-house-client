@@ -33,6 +33,7 @@ const AddJob = () => {
     const applicationDeadline = deadlineDate;
     const brand_img = form.logoUrl.value;
     const jobBanner_img = form.bannerUrl.value;
+    const experience = form.experience.value;
 
     const addJobInfo = {
       postedBy,
@@ -42,6 +43,7 @@ const AddJob = () => {
       jobTitle,
       category,
       description,
+      experience,
       location,
       salaryRange,
       jobPostingDate,
@@ -72,6 +74,8 @@ const AddJob = () => {
 
         console.log("add job success", data);
       });
+
+    form.reset();
   };
 
   return (
@@ -83,14 +87,14 @@ const AddJob = () => {
         data-aos="fade-up"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="1000"
-        className="w-full max-w-3xl  mx-auto mt-10"
+        className="w-full max-w-3xl  px-8 mx-auto mt-10"
       >
         <div className="bg-white dark:bg-slate-500 rounded-lg shadow-lg p-6">
           <h2 className="text-3xl underline font-medium mb-6 text-center">
             Create Job Post
           </h2>
           <form onSubmit={handleSubmit}>
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-6 justify-items-center ">
               <div className="col-span-2 sm:col-span-1">
                 <label
                   htmlFor="card-number"
@@ -105,7 +109,7 @@ const AddJob = () => {
                   required
                   placeholder="User Name"
                   defaultValue={user?.displayName}
-                  className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-80 py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
               </div>
               <div className="col-span-2 sm:col-span-1">
@@ -123,7 +127,7 @@ const AddJob = () => {
                   placeholder="Full Name"
                   defaultValue={user?.email}
                   readOnly
-                  className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-80 py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
               </div>
               <div className="col-span-2 sm:col-span-1">
@@ -140,9 +144,28 @@ const AddJob = () => {
                   id="cvv"
                   placeholder="Enter Job Title"
                   defaultValue=""
-                  className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-80 py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
               </div>
+
+              <div className="col-span-2 sm:col-span-1">
+                <label
+                  htmlFor="card-number"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  Job Description
+                </label>
+                <input
+                  type="text"
+                  name="description"
+                  id="card-number"
+                  required
+                  placeholder="Enter Job description"
+                  defaultValue=""
+                  className="w-80 py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                />
+              </div>
+
               <div className="col-span-2 sm:col-span-1">
                 <label
                   htmlFor="card-number"
@@ -163,21 +186,22 @@ const AddJob = () => {
                   <option value="Part Time">Part Time</option>
                 </select>
               </div>
+
               <div className="col-span-2 sm:col-span-1">
                 <label
-                  htmlFor="card-number"
+                  htmlFor="cvv"
                   className="block text-sm font-medium text-gray-700 mb-2"
                 >
-                  Job Description
+                  Experience
                 </label>
                 <input
                   type="text"
-                  name="description"
-                  id="card-number"
+                  name="experience"
                   required
-                  placeholder="Enter Job description"
+                  id="cvv"
+                  placeholder="Enter Job Title"
                   defaultValue=""
-                  className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-80 py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
               </div>
               <div className="col-span-2 sm:col-span-1">
@@ -194,7 +218,7 @@ const AddJob = () => {
                   required
                   placeholder="Enter banner url"
                   defaultValue=""
-                  className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-80 py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
               </div>
               <div className="col-span-2 sm:col-span-1">
@@ -211,7 +235,7 @@ const AddJob = () => {
                   required
                   placeholder="Enter logo url"
                   defaultValue=""
-                  className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-80 py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
               </div>
               <div className="col-span-2 sm:col-span-1">
@@ -228,7 +252,7 @@ const AddJob = () => {
                   id="card-number"
                   placeholder="Enter Location"
                   defaultValue=""
-                  className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-80 py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
               </div>
               <div className="col-span-2 sm:col-span-1">
@@ -245,11 +269,11 @@ const AddJob = () => {
                   placeholder="$70,000 - $90,000"
                   defaultValue=""
                   required
-                  className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-80 py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
               </div>
 
-              <div className="col-span-2 sm:col-span-1">
+              <div className="col-span-2  sm:col-span-1">
                 <label
                   htmlFor="expiration-date"
                   className="block text-sm font-medium text-gray-700 mb-2"
@@ -265,7 +289,7 @@ const AddJob = () => {
                   showTimeSelect={false}
                   required
                   placeholder="MM / YY"
-                  className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-80 py-3  px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
               </div>
 
@@ -286,7 +310,7 @@ const AddJob = () => {
                   placeholder="Enter Deadline"
                   defaultValue=""
                   required
-                  className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
+                  className="w-80 py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
               </div>
             </div>

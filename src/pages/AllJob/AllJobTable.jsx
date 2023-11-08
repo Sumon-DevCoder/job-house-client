@@ -96,13 +96,14 @@ const AllJobTable = ({ searchResults }) => {
         <div className="col-span-12 ">
           <div className="overflow-auto lg:overflow-visible ">
             <table className="table text-gray-400 border-separate space-y-6 text-sm ">
-              <thead className="dark:bg-gray-800 bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800 text-gray-200 text-[1rem]   dark:text-gray-300">
+              <thead className="dark:bg-gray-800   bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800 text-gray-200 text-[1rem]   dark:text-gray-300">
                 <tr>
                   <th className="p-3">Job Title</th>
                   <th className="p-3 text-left">Job category</th>
                   <th className="p-3 text-left">Post</th>
                   <th className="p-3 text-left">Deadline</th>
                   <th className="p-3 text-left">salaryRange</th>
+                  <th className="p-3 text-left">Applicants</th>
                   <th className="p-3 text-left">Action</th>
                 </tr>
               </thead>
@@ -130,6 +131,7 @@ const AllJobTable = ({ searchResults }) => {
                       {job?.applicationDeadline.slice(0, 10)}
                     </td>
                     <td className="p-3 ">${job?.salaryRange}</td>
+                    <td className="p-3 text-center">{job?.applicantsNumber}</td>
 
                     <td className="p-3 flex items-center space-x-5">
                       {user ? (

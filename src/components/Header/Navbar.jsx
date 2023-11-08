@@ -68,7 +68,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className=" w-full fixed bg-slate-50 dark:bg-slate-900  mb-10 z-20">
+      <nav className=" w-full fixed bg-slate-300 dark:bg-slate-900  z-20">
         <div className="w-full flex flex-wrap items-center justify-between container  mx-auto p-2">
           {/* menubar */}
           <div
@@ -77,9 +77,9 @@ const Navbar = () => {
           >
             <label tabIndex={0}>
               {isActive ? (
-                <AiOutlineMenuUnfold className="text-3xl " />
+                <AiOutlineMenuUnfold className="text-3xl dark:text-gray-400" />
               ) : (
-                <AiFillCloseCircle className="text-3xl 0" />
+                <AiFillCloseCircle className="text-3xl dark:text-gray-400" />
               )}
             </label>
             <ul
@@ -99,31 +99,23 @@ const Navbar = () => {
           </div>
 
           <Link to={"/"} className="flex items-center">
-            {/* <h1 className="font-extrabold text-transparent text-2xl bg-clip-text bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800">
-              JOBHouse
-            </h1> */}
-
-            <img
-              className="w-40 rounded"
-              src="/public/images/logo.png"
-              alt=""
-            />
+            <img className="w-40 rounded" src="/images/logo.png" alt="" />
           </Link>
 
           {/* dark mode */}
           <div>
             <button
               onClick={themeChaged}
-              className="btn rounded-md btn-outline btn-sm"
+              className="btn rounded-md btn-outline border-1 border-gray-400 btn-sm"
             >
               {mode === "light" ? (
                 <a
-                  className="hs-dark-mode-active:hidden  hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
+                  className="hs-dark-mode-active:hidden   hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
                   href="#!"
                   data-hs-theme-click-value="dark"
                 >
                   <svg
-                    className="w-4 h-4 text-black hover:text-white"
+                    className="w-4 h-4 text-gray-400text-white"
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
@@ -202,7 +194,6 @@ const Navbar = () => {
               )}
             </div>
           </div>
-          {/* navbar small device */}
           <div
             className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
             id="navbar-user"

@@ -12,7 +12,7 @@ const GetJobAlert = () => {
     const emailInfo = { email };
 
     // send info to database
-    fetch("https://job-house-server.vercel.app/usersInfo", {
+    fetch("https://job-house-server.vercel.app/userSubscribes", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -33,6 +33,9 @@ const GetJobAlert = () => {
 
         console.log("userInfo send successfully", data);
       });
+
+    //reset
+    form.reset();
   };
 
   return (
@@ -46,9 +49,9 @@ const GetJobAlert = () => {
             Enter your active email where we can send mail as alert about your
             dream jobs.
           </p>
-          <div className="sm:flex m-auto py-3  rounded-full   md:w-6/12 xl items-center bg-white  overflow-hidden px-2 justify-between">
+          <div className="sm:flex m-auto py-3  rounded-full   md:w-6/12 xl items-center  bg-white  overflow-hidden px-2 justify-between">
             <input
-              className="text-base text-gray-400 flex-grow outline-none px-2 "
+              className="text-base text-gray-400 dark: flex-grow outline-none px-2 "
               type="email"
               required
               name="email"

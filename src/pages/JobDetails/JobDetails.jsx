@@ -42,41 +42,17 @@ const JobDetails = () => {
   const handleValidation = () => {
     if (dedlineDate < currentDate) {
       return Swal.fire({
-        title: "The deadline is over",
-        showClass: {
-          popup: `
-            animate__animated
-            animate__fadeInUp
-            animate__faster
-          `,
-        },
-        hideClass: {
-          popup: `
-            animate__animated
-            animate__fadeOutDown
-            animate__faster
-          `,
-        },
+        title: "Sorry, Deadline is over",
+        text: "Sorry, Can't Apply because deadline is expired",
+        icon: "error",
       });
     }
 
     if (postEmail === userEmail) {
       return Swal.fire({
-        title: "Sorry, Can't Apply because You create This Job Post",
-        showClass: {
-          popup: `
-            animate__animated
-            animate__fadeInUp
-            animate__faster
-          `,
-        },
-        hideClass: {
-          popup: `
-            animate__animated
-            animate__fadeOutDown
-            animate__faster
-          `,
-        },
+        title: "You Can't Apply This Post",
+        text: "Sorry, Can't Apply because You create This Job Post",
+        icon: "error",
       });
     }
   };
@@ -230,15 +206,16 @@ const JobDetails = () => {
               </button>
 
               <dialog id="my_modal_1" className="modal">
-                <div className="modal-box ">
-                  <div className="w-full max-w-3xl  mx-auto mt-10">
-                    <div className=" rounded-lg  p-6">
+                <div className="modal-box bg-gradient-to-r  from-gray-200 via-gray-400 to-gray-600 ">
+                  <h2 className="text-3xl text-center font-semibold">
+                    Apply Form
+                  </h2>
+                  <div className="w-full max-w-3xl  mx-auto mt-5">
+                    <div className=" rounded-lg  ">
                       <form className="" onSubmit={handleApplyBtn}>
                         <div
                           className={
-                            successMessage
-                              ? "hidden"
-                              : '"grid grid-cols-2 gap-6"'
+                            successMessage ? "hidden" : '"grid grid-cols-2 "'
                           }
                         >
                           <div className="col-span-2 sm:col-span-1">
@@ -290,48 +267,26 @@ const JobDetails = () => {
                               className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                             />
                           </div>
-                          <div className="col-span-2 sm:col-span-1">
-                            <label
-                              htmlFor="card-number"
-                              className="block text-sm font-medium text-gray-700 mb-2"
-                            >
-                              Job Type
-                            </label>
-                            <input
-                              type="text"
-                              name="jobType"
-                              id="card-number"
-                              placeholder="category"
-                              defaultValue={job?.category}
-                              className="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
-                            />
-                          </div>
                         </div>
 
                         {successMessage && (
-                          <p className="text-4xl text-center text-blue-400 my-2 font-bold">
+                          <p className="text-4xl text-center text-green-800 my-2 font-bold">
                             {successMessage}
                           </p>
                         )}
 
-                        <div className="mt-8">
+                        <div className="mt-4">
                           <button
                             type="submit"
                             className={
                               successMessage
                                 ? "hidden"
-                                : "w-full btn bg-green-500  hover:bg-blue-600 text-white font-medium py-3 rounded-lg focus:outline-none"
+                                : "w-full btn mb-2 border-none  bg-green-500  hover:bg-blue-600 text-white font-medium py-3 rounded-lg focus:outline-none"
                             }
                           >
                             Submit
                           </button>
-                          <div
-                            className={
-                              successMessage
-                                ? "modal-action flex justify-center"
-                                : "hidden"
-                            }
-                          >
+                          <div>
                             <form method="dialog">
                               <button className="btn w-full">Close</button>
                             </form>

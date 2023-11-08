@@ -23,7 +23,7 @@ const SkillsSection = () => {
             <div className="flex items-center mb-3">
               <div className="w-20  h-20   rounded-full dark:bg-indigo-500 bg-indigo-500 text-white ">
                 <div className="flex justify-center items-center">
-                  <img className="" src="/public/images/shuttle.png" alt="" />
+                  <img className="" src="/images/shuttle.png" alt="" />
                 </div>
               </div>
             </div>
@@ -50,7 +50,7 @@ const SkillsSection = () => {
           <div className="flex bg-[#ECFFEC] rounded-lg h-full dark:bg-gray-800   p-8 flex-col">
             <div className="flex items-center mb-3">
               <div className="w-20 h-20 mr-3 inline-flex items-center justify-center rounded-full dark:bg-indigo-500 bg-indigo-500 text-white flex-shrink-0">
-                <img className="" src="/public/images/cv.png" alt="" />
+                <img className="" src="/images/cv.png" alt="" />
               </div>
             </div>
             <div
@@ -77,7 +77,7 @@ const SkillsSection = () => {
           <div className="flex rounded-lg h-full dark:bg-gray-800 bg-[#F2F6FE] p-8 flex-col">
             <div className="flex items-center mb-3">
               <div className="w-20 h-20 mr-3 inline-flex items-center justify-center rounded-full dark:bg-indigo-500 bg-indigo-500 text-white flex-shrink-0">
-                <img className="" src="/public/images/cv2.png" alt="" />
+                <img className="" src="/images/cv2.png" alt="" />
               </div>
             </div>
 

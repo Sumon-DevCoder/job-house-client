@@ -1,13 +1,13 @@
 # JobHouse
 
 This is simple full-stack Job Seeking
-website, where user can find jobs, by categories. and they can apply etc.
+website, where user can find jobs, by categories. and they can create Job Post & apply.
 
 ## [Project Live Link](https://job-house-94161.web.app/)
 
 ## Featues
 
-- in this project will intregated (jwt) json web token authentication system as a result user can access data safely and also added dark mode and light mode both of funtionality
+- in this project will intregated (jwt) json web token authentication system as a result user can access data safely.
 
 - besides in this project added, react tabs transtack query, aos animation, carosel/slider, helmet, and so on - as a result webpage will be interactive and more effective.
 
