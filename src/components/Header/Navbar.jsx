@@ -68,8 +68,8 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className=" w-full fixed bg-slate-300 dark:bg-slate-900  z-20">
-        <div className="w-full flex flex-wrap items-center justify-between container  mx-auto p-2">
+      <nav className="w-full  fixed z-10 bg-slate-300 dark:bg-slate-900">
+        <div className="w-full flex  gap-5  items-center justify-between container  mx-auto p-2">
           {/* menubar */}
           <div
             onClick={() => setIsActive(!isActive)}
@@ -99,7 +99,11 @@ const Navbar = () => {
           </div>
 
           <Link to={"/"} className="flex items-center">
-            <img className="w-40 rounded" src="/images/logo.png" alt="" />
+            <img
+              className="w-36 md:w-40 rounded"
+              src="/images/logo.png"
+              alt=""
+            />
           </Link>
 
           {/* dark mode */}
@@ -185,12 +189,13 @@ const Navbar = () => {
                   </ul>
                 </details>
               ) : (
-                <Link
-                  to={"/login"}
-                  className="btn  bg-[#7F265B] btn-primary border-none text-white  btn-sm h-9 mr-3"
-                >
-                  Login
-                </Link>
+                <div className="animate-bounce  h-5 w-20 ">
+                  <Link to={"/login"}>
+                    <button className=" text-gray-200 btn btn-sm h-10 -mt-2  bg-gradient-to-br from-blue-400 to-blue-600  rounded-xl shadow-2xl   absolute overflow-hidden transform hover:scale-x-110 hover:scale-y-105 transition duration-300 ease-out">
+                      Login
+                    </button>
+                  </Link>
+                </div>
               )}
             </div>
           </div>

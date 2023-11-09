@@ -46,8 +46,6 @@ const router = createBrowserRouter([
             <AppliedJob />
           </PrivateRoute>
         ),
-        // loader: () =>
-        //   fetch(`https://job-house-server.vercel.app/jobAppliesByEmail?email=${user?.email}`),
       },
       {
         path: "/login",

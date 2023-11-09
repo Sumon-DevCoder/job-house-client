@@ -9,12 +9,12 @@ const Banner = () => {
 
   return (
     <div>
-      <section className="relative lg:h-[80vh] flex flex-col  pt-20 text-center text-white">
-        <div className="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
+      <section className="relative w-full lg:h-[80vh] flex flex-col z-0  pt-20 text-center text-white">
+        <div className="video-docker absolute top-0  left-0 w-full h-full overflow-hidden">
           <img className="w-full" src="/images/banner-dreamJob.jpg" alt="" />
         </div>
         <div
-          className="video-content space-y-4 z-10 "
+          className="video-content z-10 mt-2 md:pt-16 space-y-3"
           data-aos="fade-right"
           data-aos-duration="1000"
           data-aos-easing="linear"

@@ -18,7 +18,7 @@ const FeatuesCompany = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-gray-700 via-gray-200 to-slate-900 p-10  ">
+    <div className="bg-gradient-to-r from-gray-700 via-gray-200 to-slate-900 w-full py-6 container m-auto px-5 hidden lg:block">
       <div
         className="text-center text-xl  md:text-3xl font-bold"
         data-aos="fade-left"
@@ -26,7 +26,7 @@ const FeatuesCompany = () => {
         More than <span className="font-bold">50k recruiters</span> from leading
         tech companies are hiring
       </div>
-      <div className="mt-10 container m-auto ">
+      <div className="mt-10 container ">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}

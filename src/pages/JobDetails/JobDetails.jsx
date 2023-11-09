@@ -14,6 +14,8 @@ const JobDetails = () => {
   const { user } = useAuthContext();
   const [successMessage, setSuccessMessage] = useState(null);
 
+  console.log("my daaata", job);
+
   const {
     postedBy,
     jobTitle,
@@ -35,7 +37,7 @@ const JobDetails = () => {
   const dedlineDate = new Date(applicationDeadline);
 
   // check post email
-  const postEmail = job.email;
+  const postEmail = job?.email;
   const userEmail = user?.email;
 
   // handle Apply validtion
@@ -60,7 +62,6 @@ const JobDetails = () => {
   const handleApplyBtn = (e) => {
     e.preventDefault();
     // get input field
-
     const form = e.target;
     const userName = form.user_name.value;
     const email = form.user_email.value;
@@ -114,8 +115,8 @@ const JobDetails = () => {
   };
 
   return (
-    <div className="flex justify-center pt-10 mb-20">
-      <div key={job?._id} className=" lg:w-6/12 md:px-10 pt-5 px-2">
+    <div className="flex justify-center  pt-10 mb-20">
+      <div key={job?._id} className=" lg:w-9/12 md:px-10 pt-5 px-2">
         <div className="card  dark:bg-slate-900 bg-[#FFFFFF] dark:border-none rounded-lg border-2 ">
           <div className="p-5 dark:text-gray-400">
             <img
@@ -131,14 +132,14 @@ const JobDetails = () => {
               <div className="flex  flex-col items-center">
                 <div className="flex items-center text-[1.1rem] md:ml-2 gap-1">
                   <CiCalendarDate className="text-lg " />{" "}
-                  <p>Posting : {job?.jobPostingDate.slice(0, 10)}</p>
+                  <p>Posting : {job?.jobPostingDate?.slice(0, 10)}</p>
                 </div>
                 <div className="flex items-center text-[1.1rem] gap-1">
                   <CiCalendarDate className="text-lg " />{" "}
                   <span className="text-black dark:text-gray-400">
                     deadline :
                   </span>{" "}
-                  {job?.applicationDeadline.slice(0, 10)}
+                  {job?.applicationDeadline?.slice(0, 10)}
                 </div>
               </div>
             </div>

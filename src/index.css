@@ -7,7 +7,7 @@ li {
 }
 
 a.active {
-  color: coral;
+  color: blue;
   transition: 1s;
 }
 

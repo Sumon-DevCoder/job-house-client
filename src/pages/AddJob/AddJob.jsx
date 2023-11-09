@@ -87,7 +87,7 @@ const AddJob = () => {
         data-aos="fade-up"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="1000"
-        className="w-full max-w-3xl  px-8 mx-auto mt-10"
+        className="w-full max-w-3xl  px-8 mx-auto pt-24"
       >
         <div className="bg-white dark:bg-slate-500 rounded-lg shadow-lg p-6">
           <h2 className="text-3xl underline font-medium mb-6 text-center">

@@ -36,7 +36,7 @@ const MyJobsTable = ({ jobs, handleDelete, handleUpdate }) => {
                             src={job?.brand_img}
                             alt="unsplash image"
                           />
-                          <div className="ml-3 flex  items-center text-lg">
+                          <div className="ml-3  flex flex-wrap  items-center text-lg">
                             <div>{job?.jobTitle}</div>
                           </div>
                         </div>
@@ -45,29 +45,41 @@ const MyJobsTable = ({ jobs, handleDelete, handleUpdate }) => {
                         <span>{job?.category}</span>
                       </td>
                       <td className="p-3">
-                        {job?.jobPostingDate.slice(0, 10)}
+                        {job?.jobPostingDate?.slice(0, 10)}
                       </td>
                       <td className="p-3 font-bold">
-                        {job?.applicationDeadline.slice(0, 10)}
+                        {job?.applicationDeadline?.slice(0, 10)}
                       </td>
                       <td className="p-3 ">${job?.salaryRange}</td>
 
-                      <td className="p-3 flex items-center space-x-5">
+                      <td className="p-3 flex items-center justify-center space-x-5">
                         <Link to={`/updateJobs/${job?._id}`}>
-                          <button
-                            onClick={() => handleUpdate(job?._id)}
-                            className="inline-flex items-center px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium rounded-md"
-                          >
-                            Update
+                          <button onClick={() => handleUpdate(job?._id)}>
+                            <div className="w-auto h-auto">
+                              <div className="flex-1 h-full">
+                                <div className="flex items-center btn btn-sm border-none justify-center flex-1 h-full p-2 bg-green-500 text-white shadow rounded-lg">
+                                  <div className="relative">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      className="h-5 w-5"
+                                      viewBox="0 0 20 20"
+                                      fill="currentColor"
+                                    >
+                                      <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                    </svg>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </button>
                         </Link>
                         <button
                           onClick={() => handleDelete(job?._id)}
-                          className="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md"
+                          className="inline-flex items-center px-2 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 mr-2"
+                            className="h-5 w-5"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -79,7 +91,6 @@ const MyJobsTable = ({ jobs, handleDelete, handleUpdate }) => {
                               d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                             />
                           </svg>
-                          Delete
                         </button>
                       </td>
                     </tr>

@@ -6,17 +6,20 @@ import { IoMdPersonAdd } from "react-icons/io";
 import { CiCalendarDate } from "react-icons/ci";
 import "react-tabs/style/react-tabs.css";
 import { Link } from "react-router-dom";
-import useAuthContext from "../../hooks/useAuthContext";
 import Swal from "sweetalert2";
 import { PropTypes } from "prop-types";
 import { useEffect, useState } from "react";
-import Aos from "aos";
+
+import useAuthContext from "../../hooks/useAuthContext";
 
 const CategoryTab = ({ allJobsData }) => {
+  // authConext
   const { user } = useAuthContext();
+  // state
   const [category, setCategory] = useState("");
   const [jobsData, setJobsData] = useState(allJobsData);
 
+  // loadData
   useEffect(() => {
     fetch(`https://job-house-server.vercel.app/jobByCategory/${category}`)
       .then((res) => res.json())
@@ -32,38 +35,31 @@ const CategoryTab = ({ allJobsData }) => {
       showCancelButton: true,
       focusConfirm: false,
       confirmButtonText: `
-        <i class="fa fa-thumbs-up"></i> Ok!
+        <i class="fa fa-thumbs-up"></i> Ok
       `,
     });
   };
 
-  useEffect(() => {
-    Aos.init();
-  }, []);
-
   return (
-    <div className="my-20 ">
-      <Tabs className="text-center mt-16 container m-auto px-10 md:px-0">
+    <div className="my-10 md:my-16  ">
+      <Tabs className="text-center container m-auto px-10 ">
         <h1 className="text-4xl font-bold mb-2 dark:text-gray-400">
           Browse by category
         </h1>
         <h2 className="text-lg text-[#10B981] font-bold font-serif  mb-6 ">
           Find the job that is perfect for You
         </h2>
-        <TabList className=" bg-[#10B981] dark:bg-gray-500  rounded-lg    p-2 ">
+        <TabList className="bg-[#10B981] dark:bg-gray-500  rounded-lg p-2 ">
           <Tab onClick={() => setJobsData(allJobsData)}>All Jobs</Tab>
           <Tab onClick={() => setCategory(`On Site Job`)}>On Site Job</Tab>
           <Tab onClick={() => setCategory(`Remote Job`)}>Remote Job</Tab>
           <Tab onClick={() => setCategory(`Hybrid`)}>Hybrid</Tab>
           <Tab onClick={() => setCategory(`Part Time`)}>Part Time</Tab>
         </TabList>
-        <div
-          data-aos="fade-up"
-          className="grid grid-cols-1 mt-5  md:grid-cols-1 lg:grid-cols-2 gap-5 md:gap-x-8 px-2  md:px-5 justify-items-center container m-auto mb-10"
-        >
+        <div className="grid grid-cols-1 mt-5 lg:grid-cols-2    md:px-5 justify-items-center container m-auto  gap-x-5">
           {jobsData?.map((job) => (
-            <div key={job?._id} className="lg:w-full    pt-5 px-2">
-              <div className="card card-body p-2 bg-gradient-to-r from-cyan-500 to-cyan-200  transform transition duration-500 hover:scale-110">
+            <div key={job?._id} className="lg:w-full    pt-5">
+              <div className="card card-body p-2 bg-gradient-to-r from-cyan-500 to-cyan-200  transform transition duration-500 hover:scale-105">
                 <div className="p-5 space-y-1">
                   <div className="flex  justify-between">
                     <h2 className="card-title  text-black">{job?.jobTitle}</h2>
@@ -86,7 +82,7 @@ const CategoryTab = ({ allJobsData }) => {
 
                     <div className="flex items-center gap-1">
                       <CiCalendarDate className="text-lg " />{" "}
-                      <p>Post : {job?.jobPostingDate.slice(0, 10)}</p>
+                      <p>Post : {job?.jobPostingDate?.slice(0, 10)}</p>
                     </div>
                   </div>
                   <div className="text-start flex flex-wrap justify-between  gap-2  ">
@@ -98,7 +94,7 @@ const CategoryTab = ({ allJobsData }) => {
                     <div className="flex items-center gap-1">
                       <CiCalendarDate className="text-lg " />{" "}
                       <span className="text-black">deadline :</span>{" "}
-                      {job?.applicationDeadline.slice(0, 10)}
+                      {job?.applicationDeadline?.slice(0, 10)}
                     </div>
 
                     <div>

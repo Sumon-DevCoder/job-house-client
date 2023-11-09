@@ -96,7 +96,7 @@ const Register = () => {
       <Helmet>
         <title>Register</title>
       </Helmet>
-      <div data-aos="fade-up" className="py-8">
+      <div data-aos="fade-up" className="py-8 pt-20">
         <div className="flex bg-white rounded-lg shadow-xl border-2 overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
           <div className="hidden lg:block lg:w-1/2 bg-cover bg-[url('/images/login-picture.jpg')]"></div>
           <div className="w-full p-8 lg:w-1/2">

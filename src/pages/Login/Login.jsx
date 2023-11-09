@@ -16,7 +16,7 @@ const Login = () => {
 
   // aos animation
   useEffect(() => {
-  Aos.init();
+    Aos.init();
   }, []);
 
   // handle submit
@@ -77,7 +77,7 @@ const Login = () => {
       <Helmet>
         <title>Login</title>
       </Helmet>
-      <div data-aos="fade-up" className="py-8">
+      <div data-aos="fade-up" className="py-8 pt-20">
         <div className="flex bg-white rounded-lg border-2 shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
           <div className="hidden lg:block lg:w-1/2 bg-cover bg-[url('/images/login-picture.jpg')]"></div>
           <div className="w-full p-8 lg:w-1/2">
