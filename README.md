@@ -7,7 +7,7 @@ website, where user can find jobs, by categories. and they can create Job Post &
 
 ## Featues
 
-- in this project will intregated (jwt) json web token authentication system as a result user can access data safely.
+- in this project will intregated (jwt) json web token authentication system as a result user can access data safely. also added 
 
 - besides in this project added, react tabs transtack query, aos animation, carosel/slider, helmet, and so on - as a result webpage will be interactive and more effective.
 

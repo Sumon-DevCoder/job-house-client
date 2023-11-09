@@ -89,8 +89,8 @@ const UpdateJobs = () => {
 
   return (
     <div>
-      <div className="w-full max-w-3xl md:px-8 mx-auto mt-10">
-        <div className="bg-white rounded-lg shadow-lg p-6">
+      <div className="w-full max-w-3xl md:px-8 mx-auto pt-24">
+        <div className="bg-white dark:bg-slate-400 rounded-lg shadow-lg p-6">
           <h2 className="text-3xl underline font-medium mb-6 text-center">
             Update Job Post
           </h2>
@@ -317,7 +317,7 @@ const UpdateJobs = () => {
             <div className="mt-8">
               <button
                 type="submit"
-                className="w-full bg-green-500 btn hover:bg-blue-600 text-white font-medium py-3 rounded-lg focus:outline-none"
+                className="w-full bg-green-500 border-none btn hover:bg-blue-600 text-white font-medium py-3 rounded-lg focus:outline-none"
               >
                 Update Job
               </button>

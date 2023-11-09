@@ -19,7 +19,7 @@ const MyJobsTable = ({ jobs, handleDelete, handleUpdate }) => {
                   <th className="p-3 text-left">Job category</th>
                   <th className="p-3 text-left">Post</th>
                   <th className="p-3 text-left">Deadline</th>
-                  <th className="p-3 text-left">salaryRange</th>
+                  <th className="p-3 text-left">Salary range</th>
                   <th className="p-3 text-left">Action</th>
                 </tr>
               </thead>

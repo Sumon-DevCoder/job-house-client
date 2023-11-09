@@ -317,7 +317,7 @@ const AddJob = () => {
             <div className="mt-8">
               <button
                 type="submit"
-                className="w-full bg-green-500 btn hover:bg-blue-600 text-white font-medium py-3 rounded-lg focus:outline-none"
+                className="w-full border-none bg-green-500 btn hover:bg-blue-600 text-white font-medium py-3 rounded-lg focus:outline-none"
               >
                 Add Job
               </button>
